@@ -1,4 +1,10 @@
+import {Banner} from "../components/Banner";
+
 const Home = () => {
-  return <h1 className="text-primary-600 font-bold text-2xl">Hello World</h1>
+  return (
+    <>
+      <Banner />
+    </>
+  )
 }
 export default Home
