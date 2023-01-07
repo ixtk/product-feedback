@@ -1,6 +1,7 @@
 import "styles/globals.css"
 import type { AppProps } from "next/app"
 import { Jost } from "@next/font/google"
+import clsx from "clsx"
 
 const jost = Jost({
   variable: "--font-jost",
@@ -9,7 +10,7 @@ const jost = Jost({
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <div className={`${jost.variable} font-sans`}>
+    <div className={clsx(jost.variable, "font-sans")}>
       <Component {...pageProps} />
     </div>
   )

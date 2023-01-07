@@ -1,6 +1,7 @@
 import { Banner } from "components/Banner"
 import { Button } from "components/Button"
 import DropdownArrowIcon from "assets/icons/arrow.svg"
+import { Sidebar } from "../components/Sidebar"
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
           <Button text="+ Add feedback" accent={true} />
         </div>
       </div>
+      <Sidebar />
     </>
   )
 }
