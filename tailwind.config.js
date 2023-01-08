@@ -30,6 +30,9 @@ module.exports = {
         "banner-sm": "url('../assets/images/background-sm.png')",
         "banner-md": "url('../assets/images/background-md.png')",
         "banner-lg": "url('../assets/images/background-lg.png')"
+      },
+      flex: {
+        2: "2 2 0%"
       }
     }
   },
