@@ -6,12 +6,12 @@ import { Sidebar } from "components/Sidebar"
 
 const Home = () => {
   return (
-    <div className="md:max-w-3xl md:mx-auto md:py-10 md:px-3">
-      <div className="relative md:flex gap-x-3 md:mb-5">
+    <div className="md:max-w-3xl md:mx-auto md:py-10 md:px-3 xl:flex xl:max-w-5xl xl:gap-x-6 xl:items-start">
+      <div className="relative md:flex gap-x-3 md:mb-5 xl:flex-col xl:w-60 gap-y-5">
         <Banner isSidebarOpen={true} />
         <Sidebar />
       </div>
-      <div className="px-4 py-2 md:py-4 bg-secondary-900 text-base-100 md:rounded-xl">
+      <div className="px-4 py-2 md:py-4 bg-secondary-900 text-base-100 md:rounded-xl xl:grow">
         <div className="max-w-md mx-auto flex items-center justify-between md:max-w-none">
           <div className="hidden md:flex items-center gap-x-4">
             <SuggestionsIcon />

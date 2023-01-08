@@ -30,7 +30,7 @@ export const Sidebar = () => {
   })
 
   return (
-    <div className="absolute right-0 bg-base-300 p-5 w-64 flex flex-col gap-y-5 h-screen md:static md:p-0 md:flex-row md:w-auto flex-2 md:h-auto md:gap-x-3">
+    <div className="absolute right-0 bg-base-300 p-5 w-64 flex flex-col gap-y-5 h-screen md:static md:p-0 md:flex-row md:w-auto flex-2 md:h-auto md:gap-x-3 xl:flex-col">
       <BaseContainer classExtension="flex flex-wrap gap-3 md:basis-2/4 md:content-start">
         {tagElements}
       </BaseContainer>
