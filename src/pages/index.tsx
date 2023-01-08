@@ -6,7 +6,10 @@ import { Sidebar } from "../components/Sidebar"
 const Home = () => {
   return (
     <>
-      <Banner />
+      <div className="relative">
+        <Banner isSidebarOpen={true} />
+        <Sidebar />
+      </div>
       <div className="px-4 py-2 bg-secondary-900 text-base-100">
         <div className="max-w-md mx-auto flex items-center justify-between">
           <div className="text-sm">
@@ -19,7 +22,6 @@ const Home = () => {
           <Button text="+ Add feedback" accent={true} />
         </div>
       </div>
-      <Sidebar />
     </>
   )
 }
