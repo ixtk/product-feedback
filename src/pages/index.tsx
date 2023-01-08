@@ -7,29 +7,29 @@ import { FeedbackCard } from "components/FeedbackCard"
 
 const Home = () => {
   return (
-    <div className="md:max-w-3xl md:mx-auto md:py-10 md:px-3 xl:flex xl:max-w-5xl xl:gap-x-6 xl:items-start">
-      <div className="relative md:flex gap-x-3 md:mb-5 xl:flex-col xl:w-60 gap-y-5">
+    <div className="md:mx-auto md:max-w-3xl md:py-10 md:px-3 xl:flex xl:max-w-5xl xl:items-start xl:gap-x-6">
+      <div className="relative gap-x-3 gap-y-5 md:mb-5 md:flex xl:w-60 xl:flex-col">
         <Banner isSidebarOpen={true} />
         <Sidebar />
       </div>
       <div className="xl:grow">
-        <div className="px-4 py-2 md:py-4 bg-secondary-900 text-base-100 md:rounded-xl">
-          <div className="max-w-md mx-auto flex items-center justify-between md:max-w-none">
-            <div className="hidden md:flex items-center gap-x-4">
+        <div className="bg-secondary-900 px-4 py-2 text-base-100 md:rounded-xl md:py-4">
+          <div className="mx-auto flex max-w-md items-center justify-between md:max-w-none">
+            <div className="hidden items-center gap-x-4 md:flex">
               <SuggestionsIcon />
-              <h2 className="text-lg font-bold inline-block">12 Suggestions</h2>
+              <h2 className="inline-block text-lg font-bold">12 Suggestions</h2>
             </div>
             <div className="text-sm">
               <span className="mr-2">Sort by:</span>
-              <button className="font-bold py-3">
+              <button className="py-3 font-bold">
                 <span>Most Upvotes</span>
-                <DropdownArrowIcon className="inline-block ml-2" />
+                <DropdownArrowIcon className="ml-2 inline-block" />
               </button>
             </div>
             <Button text="+ Add feedback" accent={true} />
           </div>
         </div>
-        <div className="p-4 md:px-0 md:yy-6 flex gap-y-4 flex-col">
+        <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">
           <FeedbackCard />
           <FeedbackCard />
           <FeedbackCard />

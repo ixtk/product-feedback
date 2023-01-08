@@ -10,9 +10,9 @@ const jost = Jost({
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <div className={clsx(jost.variable, "font-sans bg-base-300")}>
+    <main className={clsx(jost.variable, "bg-base-300 font-sans")}>
       <Component {...pageProps} />
-    </div>
+    </main>
   )
 }
 

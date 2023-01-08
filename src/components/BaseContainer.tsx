@@ -9,7 +9,7 @@ export const BaseContainer = ({
   classExtension?: string
 }) => {
   return (
-    <div className={clsx(classExtension, "p-5 rounded-xl bg-base-100")}>
+    <div className={clsx(classExtension, "rounded-xl bg-base-100 p-5")}>
       {children}
     </div>
   )
