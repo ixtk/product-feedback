@@ -11,7 +11,7 @@ const FEATURE_COUNT = [
 
 export const Sidebar = () => {
   const tagElements = TAG_OPTIONS.map(tagOptionText => {
-    return <Tag text={tagOptionText} key={tagOptionText} />
+    return <Tag text={tagOptionText} clickable={true} key={tagOptionText} />
   })
 
   const featureCountElements = FEATURE_COUNT.map(feature => {
