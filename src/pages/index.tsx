@@ -26,7 +26,7 @@ const Home = () => {
                 <DropdownArrowIcon className="ml-2 inline-block" />
               </button>
             </div>
-            <Button text="+ Add feedback" accent={true} />
+            <Button text="+ Add feedback" variant="accent" />
           </div>
         </div>
         <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">
