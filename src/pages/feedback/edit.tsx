@@ -1,11 +1,12 @@
 import { FeedbackForm } from "components/FeedbackForm"
 import { FormContainer } from "components/FormContainer"
 
-const NewFeedback = () => {
+const EditFeedback = () => {
   return (
     <FormContainer>
-      <FeedbackForm editing={false} />
+      <FeedbackForm editing={true} />
     </FormContainer>
   )
 }
-export default NewFeedback
+
+export default EditFeedback
