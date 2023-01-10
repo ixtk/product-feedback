@@ -20,7 +20,8 @@ module.exports = {
         100: "hsl(0, 0%, 100%)"
       },
       accentPrimary: "hsl(282, 83%, 52%)",
-      accentSecondary: "hsl(14, 83%, 74%)"
+      accentSecondary: "hsl(14, 83%, 74%)",
+      danger: "hsl(0, 67%, 53%)"
     },
     extend: {
       fontFamily: {
