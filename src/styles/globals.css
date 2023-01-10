@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-    #__next {
-        @apply h-full;
-    }
+  #__next {
+    @apply h-full;
+  }
 }
