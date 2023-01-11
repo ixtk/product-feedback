@@ -1,6 +1,7 @@
 import { FeedbackPageContainer } from "components/FeedbackPageContainer"
 import { FeedbackCard } from "components/FeedbackCard"
 import { Button } from "components/Button"
+import { CommentChain } from "components/CommentChain"
 
 const FeedbackPage = () => {
   return (
@@ -24,6 +25,7 @@ const FeedbackPage = () => {
           <Button text="Post Comment" variant="accent" />
         </div>
       </div>
+      <CommentChain />
     </FeedbackPageContainer>
   )
 }
