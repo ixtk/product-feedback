@@ -6,4 +6,8 @@
   #__next {
     @apply h-full;
   }
+
+  .rounded-corners {
+    @apply rounded-md;
+  }
 }

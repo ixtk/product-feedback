@@ -39,7 +39,10 @@ export const Sidebar = () => {
       <BaseContainer classExtension="md:basis-2/4">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="text-lg font-bold text-secondary-900">Roadmap</h2>
-          <Link href="/" className="text-sm font-semibold text-primary-600">
+          <Link
+            href="/roadmap"
+            className="text-sm font-semibold text-primary-600"
+          >
             View
           </Link>
         </div>

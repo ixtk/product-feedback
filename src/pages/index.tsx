@@ -1,9 +1,10 @@
 import { Banner } from "components/Banner"
-import { Button } from "components/Button"
+import { LinkButton } from "components/Button"
 import DropdownArrowIcon from "assets/icons/arrow.svg"
 import SuggestionsIcon from "assets/icons/suggestions.svg"
 import { Sidebar } from "components/Sidebar"
 import { FeedbackCard } from "components/FeedbackCard"
+import React from "react"
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
         <Sidebar />
       </div>
       <div className="xl:grow">
-        <div className="bg-secondary-900 px-4 py-2 text-base-100 md:rounded-xl md:py-4">
+        <div className="md:rounded-corners bg-secondary-900 px-4 py-2 text-base-100 md:py-4">
           <div className="mx-auto flex max-w-md items-center justify-between md:max-w-none">
             <div className="hidden items-center gap-x-4 md:flex">
               <SuggestionsIcon />
@@ -26,7 +27,11 @@ const Home = () => {
                 <DropdownArrowIcon className="ml-2 inline-block" />
               </button>
             </div>
-            <Button text="+ Add feedback" variant="accent" />
+            <LinkButton
+              text="+ Add feedback"
+              variant="accent"
+              href="/feedback/new"
+            />
           </div>
         </div>
         <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">

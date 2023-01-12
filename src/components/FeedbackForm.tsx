@@ -1,10 +1,11 @@
-import { Button } from "components/Button"
+import { Button, LinkButton } from "components/Button"
 import EditIcon from "assets/icons/edit-feedback.svg"
 import NewIcon from "assets/icons/new-feedback.svg"
+import React from "react"
 
 export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   return (
-    <form className="relative inline-block flex flex-col gap-y-5 rounded-xl bg-base-100 p-5">
+    <form className="rounded-corners relative inline-block flex flex-col gap-y-5 bg-base-100 p-5">
       <div className="absolute top-0 -translate-y-1/2">
         {editing ? <EditIcon /> : <NewIcon />}
       </div>
@@ -21,7 +22,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
         <input
           type="text"
           id="text"
-          className="w-full rounded-xl bg-base-300 p-3 outline-primary-600"
+          className="rounded-corners w-full bg-base-300 p-3 outline-primary-600"
         />
       </div>
       <div>
@@ -30,7 +31,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
         </label>
         <select
           id="category"
-          className="w-full rounded-xl bg-base-300 p-3 outline-primary-600"
+          className="rounded-corners w-full bg-base-300 p-3 outline-primary-600"
         >
           <option value="">demo</option>
         </select>
@@ -42,7 +43,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
           </label>
           <select
             id="status"
-            className="w-full rounded-xl bg-base-300 p-3 outline-primary-600"
+            className="rounded-corners w-full bg-base-300 p-3 outline-primary-600"
           >
             <option value="">demo status</option>
           </select>
@@ -60,7 +61,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
           cols={30}
           rows={7}
           id="details"
-          className="w-full rounded-xl bg-base-300 p-3 outline-primary-600"
+          className="rounded-corners w-full bg-base-300 p-3 outline-primary-600"
         ></textarea>
       </div>
       <div className="flex flex-col justify-end gap-y-2 gap-x-2 min-[340px]:flex-row">
@@ -72,7 +73,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
         ) : (
           <Button text="Add Feedback" variant="accent" />
         )}
-        <Button text="Cancel" variant="neutral" />
+        <LinkButton text="Cancel" variant="neutral" href="/" />
       </div>
     </form>
   )
