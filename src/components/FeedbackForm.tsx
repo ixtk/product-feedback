@@ -22,7 +22,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
         <input
           type="text"
           id="text"
-          className="rounded-corners w-full bg-base-300 p-3 outline-primary-600"
+          className="rounded-corners w-full border-0 bg-base-300 p-3 outline-primary-600"
         />
       </div>
       <div>
@@ -31,7 +31,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
         </label>
         <select
           id="category"
-          className="rounded-corners w-full bg-base-300 p-3 outline-primary-600"
+          className="rounded-corners w-full border-0 bg-base-300 p-3 outline-primary-600"
         >
           <option value="">demo</option>
         </select>
@@ -43,7 +43,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
           </label>
           <select
             id="status"
-            className="rounded-corners w-full bg-base-300 p-3 outline-primary-600"
+            className="rounded-corners w-full border-0 bg-base-300 p-3 outline-primary-600"
           >
             <option value="">demo status</option>
           </select>
@@ -61,10 +61,10 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
           cols={30}
           rows={7}
           id="details"
-          className="rounded-corners w-full bg-base-300 p-3 outline-primary-600"
+          className="rounded-corners w-full border-0 bg-base-300 p-3 outline-primary-600"
         ></textarea>
       </div>
-      <div className="flex flex-col justify-end gap-y-2 gap-x-2 min-[340px]:flex-row">
+      <div className="flex flex-col justify-end gap-y-2 gap-x-2 text-center min-[340px]:flex-row">
         {editing ? (
           <>
             <Button text="Delete" variant="danger" />

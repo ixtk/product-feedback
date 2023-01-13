@@ -5,7 +5,7 @@ export const ReplyForm = ({ replyingTo }: { replyingTo: string }) => {
   return (
     <div className="mb-5 flex flex-col gap-y-3">
       <textarea
-        className="rounded-corners w-full bg-base-300 p-3"
+        className="rounded-corners w-full border-0 bg-base-300 p-3"
         rows={4}
         placeholder={`Reply to ${replyingTo}...`}
       ></textarea>

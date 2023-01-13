@@ -9,7 +9,7 @@ import React from "react"
 const Home = () => {
   return (
     <div className="md:mx-auto md:max-w-3xl md:py-10 md:px-3 xl:flex xl:max-w-5xl xl:items-start xl:gap-x-6">
-      <div className="relative gap-x-3 gap-y-5 md:mb-5 md:flex xl:w-60 xl:flex-col">
+      <div className="relative gap-x-3 gap-y-5 md:mb-5 md:flex xl:sticky xl:top-5 xl:w-60 xl:flex-col">
         <Banner isSidebarOpen={true} />
         <Sidebar />
       </div>

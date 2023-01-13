@@ -15,6 +15,7 @@ module.exports = {
         700: "hsl(224, 20%, 49%)"
       },
       base: {
+        500: "hsl(0,0%,80%)",
         400: "hsl(0,0%,89%)",
         300: "hsl(231, 100%, 97%)",
         200: "hsl(230, 60%, 98%)",
@@ -38,5 +39,5 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [require("tailwind-scrollbar"), require("@tailwindcss/forms")]
 }

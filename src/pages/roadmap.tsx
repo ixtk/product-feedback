@@ -7,7 +7,7 @@ import { FeedbackStack } from "components/FeedbackStack"
 const Roadmap = () => {
   return (
     <div className="md:mx-auto md:max-w-7xl md:py-10 md:px-3">
-      <div className="md:rounded-corners bg-secondary-900 px-3 py-5 font-bold text-base-100">
+      <div className="md:rounded-corners bg-secondary-900 px-3 py-5 font-bold text-base-100 md:px-5">
         <div className="flex items-center justify-between">
           <div>
             <Link href="/" className="mb-3 flex items-center gap-x-3">
@@ -43,7 +43,7 @@ const Roadmap = () => {
       <div className="lg:hidden">
         <FeedbackStack feedbackStatus="Planned" />
       </div>
-      <div className="hidden grid-flow-col grid-cols-[40%_40%_40%] overflow-x-scroll pb-5 lg:grid xl:grid-cols-3 xl:overflow-x-visible">
+      <div className="hidden grid-flow-col grid-cols-[40%_40%_40%] overflow-x-scroll pb-5 scrollbar-thin scrollbar-thumb-base-500 lg:grid xl:grid-cols-3 xl:overflow-x-visible">
         <FeedbackStack feedbackStatus="Planned" />
         <FeedbackStack feedbackStatus="In-progress" />
         <FeedbackStack feedbackStatus="Live" />

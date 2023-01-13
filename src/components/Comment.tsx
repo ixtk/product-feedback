@@ -27,7 +27,7 @@ export const Comment = ({
         </button>
       </header>
       <p className="col-start-1 col-end-3 mt-3 text-secondary-700 md:col-start-2">
-        I&aposd love to see this! It always makes me so happy to see little
+        I&apos;d love to see this! It always makes me so happy to see little
         details like these on websites.
       </p>
     </article>

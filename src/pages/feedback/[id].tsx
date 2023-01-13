@@ -19,7 +19,7 @@ const FeedbackPage = () => {
           id="comment"
           cols={30}
           rows={5}
-          className="rounded-corners bg-base-300"
+          className="rounded-corners border-0 bg-base-300"
         ></textarea>
         <div className="flex justify-end">
           <Button text="Post Comment" variant="accent" />
