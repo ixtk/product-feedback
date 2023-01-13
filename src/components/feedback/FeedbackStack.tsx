@@ -1,5 +1,4 @@
-import { FeedbackCard } from "components/FeedbackCard"
-import React from "react"
+import { FeedbackCard } from "components/feedback/FeedbackCard"
 
 export const FeedbackStack = ({
   feedbackStatus

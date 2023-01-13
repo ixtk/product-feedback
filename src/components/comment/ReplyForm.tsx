@@ -1,5 +1,4 @@
-import { Button } from "components/Button"
-import React from "react"
+import { Button } from "components/common/Button"
 
 export const ReplyForm = ({ replyingTo }: { replyingTo: string }) => {
   return (

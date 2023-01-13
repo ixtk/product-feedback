@@ -1,6 +1,6 @@
-import { BaseContainer } from "components/BaseContainer"
-import { Comment } from "components/Comment"
-import { ReplyForm } from "components/ReplyForm"
+import { BaseContainer } from "components/common/BaseContainer"
+import { Comment } from "components/comment/Comment"
+import { ReplyForm } from "components/comment/ReplyForm"
 
 export const CommentChain = () => {
   return (

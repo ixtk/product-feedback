@@ -1,6 +1,6 @@
-import { Tag } from "components/Tag"
-import { UpvoteButton } from "components/UpvoteButton"
-import { CommentCount } from "components/CommentCount"
+import { Tag } from "components/common/Tag"
+import { UpvoteButton } from "components/feedback/UpvoteButton"
+import { CommentCount } from "components/comment/CommentCount"
 
 export const FeedbackCard = () => {
   return (

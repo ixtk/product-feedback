@@ -1,7 +1,6 @@
-import { Button, LinkButton } from "components/Button"
+import { Button, LinkButton } from "components/common/Button"
 import EditIcon from "assets/icons/edit-feedback.svg"
 import NewIcon from "assets/icons/new-feedback.svg"
-import React from "react"
 
 export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   return (

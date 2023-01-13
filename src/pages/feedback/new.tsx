@@ -1,4 +1,4 @@
-import { FeedbackForm } from "components/FeedbackForm"
+import { FeedbackForm } from "components/feedback/FeedbackForm"
 import { FeedbackPageContainer } from "components/FeedbackPageContainer"
 
 const NewFeedback = () => {

@@ -1,40 +1,22 @@
-import Link from "next/link"
-import { LinkButton } from "components/Button"
-import ArrowIcon from "assets/icons/arrow.svg"
-import React from "react"
-import { FeedbackStack } from "components/FeedbackStack"
+import { FeedbackStack } from "components/feedback/FeedbackStack"
+import { RoadmapHeader } from "components/RoadmapHeader"
 
 const Roadmap = () => {
   return (
     <div className="md:mx-auto md:max-w-7xl md:py-10 md:px-3">
-      <div className="md:rounded-corners bg-secondary-900 px-3 py-5 font-bold text-base-100 md:px-5">
-        <div className="flex items-center justify-between">
-          <div>
-            <Link href="/" className="mb-3 flex items-center gap-x-3">
-              <ArrowIcon className="rotate-90" />
-              <span className="text-sm">Go back</span>
-            </Link>
-            <h1 className="text-xl">Roadmap</h1>
-          </div>
-          <LinkButton
-            text="+ Add feedback"
-            variant="accent"
-            href="/feedback/new"
-          />
-        </div>
-      </div>
+      <RoadmapHeader />
       <ul className="flex border-b border-b-base-400 text-center lg:hidden">
         <li className="flex-1 border-b-4 border-b-accentPrimary">
           <button className="w-full py-4 text-sm font-bold text-secondary-900">
             Planned (12)
           </button>
         </li>
-        <li className="flex-1 border-b-4 border-opacity-0">
+        <li className="flex-1 border-b-4">
           <button className="w-full py-4 text-sm font-bold text-secondary-900">
             In progress (3)
           </button>
         </li>
-        <li className="flex-1 border-b-4 border-opacity-0">
+        <li className="flex-1 border-b-4">
           <button className="w-full py-4 text-sm font-bold text-secondary-900">
             Live (4)
           </button>

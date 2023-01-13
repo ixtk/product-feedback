@@ -1,10 +1,7 @@
 import { Banner } from "components/Banner"
-import { LinkButton } from "components/Button"
-import DropdownArrowIcon from "assets/icons/arrow.svg"
-import SuggestionsIcon from "assets/icons/suggestions.svg"
 import { Sidebar } from "components/Sidebar"
-import { FeedbackCard } from "components/FeedbackCard"
-import React from "react"
+import { FeedbackCard } from "components/feedback/FeedbackCard"
+import { MainHeader } from "components/MainHeader"
 
 const Home = () => {
   return (
@@ -14,26 +11,7 @@ const Home = () => {
         <Sidebar />
       </div>
       <div className="xl:grow">
-        <div className="md:rounded-corners bg-secondary-900 px-4 py-2 text-base-100 md:py-4">
-          <div className="mx-auto flex max-w-md items-center justify-between md:max-w-none">
-            <div className="hidden items-center gap-x-4 md:flex">
-              <SuggestionsIcon />
-              <h2 className="inline-block text-lg font-bold">12 Suggestions</h2>
-            </div>
-            <div className="text-sm">
-              <span className="mr-2">Sort by:</span>
-              <button className="py-3 font-bold">
-                <span>Most Upvotes</span>
-                <DropdownArrowIcon className="ml-2 inline-block" />
-              </button>
-            </div>
-            <LinkButton
-              text="+ Add feedback"
-              variant="accent"
-              href="/feedback/new"
-            />
-          </div>
-        </div>
+        <MainHeader />
         <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">
           <FeedbackCard />
           <FeedbackCard />

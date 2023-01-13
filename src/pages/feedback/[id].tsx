@@ -1,7 +1,7 @@
 import { FeedbackPageContainer } from "components/FeedbackPageContainer"
-import { FeedbackCard } from "components/FeedbackCard"
-import { Button } from "components/Button"
-import { CommentChain } from "components/CommentChain"
+import { FeedbackCard } from "components/feedback/FeedbackCard"
+import { Button } from "components/common/Button"
+import { CommentChain } from "components/comment/CommentChain"
 
 const FeedbackPage = () => {
   return (

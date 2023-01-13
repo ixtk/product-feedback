@@ -1,5 +1,5 @@
-import { BaseContainer } from "components/BaseContainer"
-import { Tag } from "components/Tag"
+import { BaseContainer } from "components/common/BaseContainer"
+import { Tag } from "components/common/Tag"
 import Link from "next/link"
 
 const TAG_OPTIONS = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"]
