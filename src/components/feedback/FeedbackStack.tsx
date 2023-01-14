@@ -6,7 +6,7 @@ export const FeedbackStack = ({
   feedbackStatus: string
 }) => {
   return (
-    <div className="p-3 first-of-type:pl-0">
+    <div className="p-3 md:px-5 lg:px-0">
       <h2 className="mt-1 mb-4 flex flex-col text-lg font-semibold text-secondary-800">
         <span className="hidden lg:inline-block">{feedbackStatus}</span>
         <span className="hidden text-sm font-normal text-secondary-700 lg:inline-block">

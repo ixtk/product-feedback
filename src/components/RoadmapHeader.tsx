@@ -4,7 +4,7 @@ import { LinkButton } from "components/common/Button"
 
 export const RoadmapHeader = () => {
   return (
-    <header className="md:rounded-corners flex items-center justify-between bg-secondary-900 px-3 py-5 font-bold text-base-100 md:px-5">
+    <header className="lg:rounded-corners flex items-center justify-between bg-secondary-900 px-3 py-5 font-bold text-base-100 md:px-5">
       <div>
         <Link href="/" className="mb-3 flex items-center gap-x-3">
           <ArrowIcon className="rotate-90" />

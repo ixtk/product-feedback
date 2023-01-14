@@ -13,7 +13,7 @@ export const Comment = ({
         nested && "border-b-0",
         !hasReplies &&
           "border-b border-b-base-400 pb-5 last-of-type:border-0 last-of-type:pb-0",
-        "grid grid-cols-[auto_1fr] items-center gap-x-6"
+        "grid grid-cols-[auto_1fr] items-center gap-x-3 sm:gap-x-5"
       )}
     >
       <div className="col-start-1 h-10 w-10 rounded-full bg-secondary-700"></div>
