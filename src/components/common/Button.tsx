@@ -4,6 +4,15 @@ import ArrowIcon from "assets/icons/arrow.svg"
 import React from "react"
 import { useRouter } from "next/router"
 
+interface ButtonProps {
+  text: string
+  variant: "accent" | "primary" | "neutral" | "danger"
+}
+
+interface LinkButtonProps extends ButtonProps {
+  href: string
+}
+
 const sharedClasses = (variant: string) => {
   return clsx(
     "rounded-corners px-4 py-2 text-sm font-bold text-base-100",
@@ -14,30 +23,14 @@ const sharedClasses = (variant: string) => {
   )
 }
 
-type ButtonVariants = "accent" | "primary" | "neutral" | "danger"
-
-export const Button = ({
-  text,
-  variant
-}: {
-  text: string
-  variant: ButtonVariants
-}) => {
-  return <button className={sharedClasses(variant)}>{text}</button>
+export const Button = (props: ButtonProps) => {
+  return <button className={sharedClasses(props.variant)}>{props.text}</button>
 }
 
-export const LinkButton = ({
-  text,
-  variant,
-  href
-}: {
-  text: string
-  variant: ButtonVariants
-  href: string
-}) => {
+export const LinkButton = (props: LinkButtonProps) => {
   return (
-    <Link className={sharedClasses(variant)} href={href}>
-      {text}
+    <Link className={sharedClasses(props.variant)} href={props.href}>
+      {props.text}
     </Link>
   )
 }

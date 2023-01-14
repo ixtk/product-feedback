@@ -1,19 +1,20 @@
 import clsx from "clsx"
 import React from "react"
-import { BackButton, Button } from "./common/Button"
 
-export const FeedbackPageContainer = ({
-  children,
-  classExtension
-}: {
+interface FeedbackPageContProps {
   children: React.ReactNode
   classExtension?: string
-}) => {
+}
+
+export const FeedbackPageContainer = (props: FeedbackPageContProps) => {
   return (
     <div
-      className={clsx("mx-auto px-3 pt-6 pb-12 sm:max-w-xl", classExtension)}
+      className={clsx(
+        "mx-auto px-3 pt-6 pb-12 sm:max-w-xl",
+        props.classExtension
+      )}
     >
-      {children}
+      {props.children}
     </div>
   )
 }

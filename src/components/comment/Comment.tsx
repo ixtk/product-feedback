@@ -1,17 +1,16 @@
 import clsx from "clsx"
 
-export const Comment = ({
-  nested,
-  hasReplies
-}: {
+interface CommentProps {
   nested?: boolean
   hasReplies?: boolean
-}) => {
+}
+
+export const Comment = (props: CommentProps) => {
   return (
     <article
       className={clsx(
-        nested && "border-b-0",
-        !hasReplies &&
+        props.nested && "border-b-0",
+        !props.hasReplies &&
           "border-b border-b-base-400 pb-5 last-of-type:border-0 last-of-type:pb-0",
         "grid grid-cols-[auto_1fr] items-center gap-x-3 sm:gap-x-5"
       )}

@@ -1,15 +1,15 @@
 import { BackButton, LinkButton } from "./common/Button"
 import React from "react"
 
-export const FeedbackFormHeader = ({
-  feedbackEditable = false
-}: {
+interface FeedbackFormHeaderProps {
   feedbackEditable?: boolean
-}) => {
+}
+
+export const FeedbackFormHeader = (props: FeedbackFormHeaderProps) => {
   return (
     <header className="flex items-center justify-between">
       <BackButton />
-      {feedbackEditable ? (
+      {props.feedbackEditable ? (
         <LinkButton
           href="/feedback/1/edit"
           text="Edit feedback"
