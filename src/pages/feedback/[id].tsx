@@ -2,10 +2,12 @@ import { FeedbackPageContainer } from "components/FeedbackPageContainer"
 import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { Button } from "components/common/Button"
 import { CommentChain } from "components/comment/CommentChain"
+import { FeedbackFormHeader } from "components/FeedbackFormHeader"
 
 const FeedbackPage = () => {
   return (
     <FeedbackPageContainer classExtension="flex flex-col gap-y-5">
+      <FeedbackFormHeader feedbackEditable={true} />
       <FeedbackCard />
       <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5">
         <label

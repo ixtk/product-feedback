@@ -2,19 +2,23 @@ import { BaseContainer } from "components/common/BaseContainer"
 import { Tag } from "components/common/Tag"
 import Link from "next/link"
 
-const TAG_OPTIONS = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"]
-const FEATURE_COUNT = [
+const tagOptions = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"]
+const features = [
   { status: "Planned", categoryCount: 2 },
   { status: "In-progress", categoryCount: 3 },
   { status: "Live", categoryCount: 1 }
 ]
 
 export const Sidebar = () => {
-  const tagElements = TAG_OPTIONS.map(tagOptionText => {
-    return <Tag text={tagOptionText} clickable={true} key={tagOptionText} />
+  const tagElements = tagOptions.map(tagOptionText => {
+    return (
+      <li key={tagOptionText}>
+        <Tag text={tagOptionText} clickable={true} />
+      </li>
+    )
   })
 
-  const featureCountElements = FEATURE_COUNT.map(feature => {
+  const featureCountElements = features.map(feature => {
     return (
       <div
         key={feature.status}

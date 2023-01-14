@@ -4,8 +4,8 @@ import NewIcon from "assets/icons/new-feedback.svg"
 
 export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   return (
-    <form className="rounded-corners relative inline-block flex flex-col gap-y-5 bg-base-100 p-5">
-      <div className="absolute top-0 -translate-y-1/2">
+    <form className="rounded-corners relative my-5 inline-block flex flex-col gap-y-5 bg-base-100 p-5">
+      <div className="absolute top-0 right-5 -translate-y-1/2">
         {editing ? <EditIcon /> : <NewIcon />}
       </div>
       <h1 className="mt-5 text-xl font-bold text-secondary-800">
