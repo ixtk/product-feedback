@@ -1,6 +1,6 @@
 import { FeedbackForm } from "components/feedback/FeedbackForm"
 import { FeedbackPageContainer } from "components/FeedbackPageContainer"
-import { FeedbackFormHeader } from "../../components/FeedbackFormHeader"
+import { FeedbackFormHeader } from "components/FeedbackFormHeader"
 
 const NewFeedback = () => {
   return (

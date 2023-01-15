@@ -1,4 +1,4 @@
-import EditIcon from "../../assets/icons/edit-feedback.svg"
+import EditIcon from "assets/icons/edit-feedback.svg"
 import NewIcon from "assets/icons/new-feedback.svg"
 
 export const FeedbackFormHeader = ({ editing }: { editing: boolean }) => {

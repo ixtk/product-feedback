@@ -1,5 +1,6 @@
-import { BackButton, LinkButton } from "./common/Button"
+import { LinkButton } from "components/common/Button"
 import React from "react"
+import { HomeLink } from "components/common/HomeLink"
 
 interface FeedbackFormHeaderProps {
   feedbackEditable?: boolean
@@ -8,7 +9,9 @@ interface FeedbackFormHeaderProps {
 export const FeedbackFormHeader = (props: FeedbackFormHeaderProps) => {
   return (
     <header className="flex items-center justify-between">
-      <BackButton />
+      <div className="text-secondary-900">
+        <HomeLink />
+      </div>
       {props.feedbackEditable ? (
         <LinkButton
           href="/feedback/1/edit"
