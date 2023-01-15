@@ -1,79 +1,42 @@
-import { Button, LinkButton } from "components/common/Button"
-import EditIcon from "assets/icons/edit-feedback.svg"
-import NewIcon from "assets/icons/new-feedback.svg"
+import {
+  InputLabel,
+  Select,
+  Textarea,
+  TextField
+} from "components/common/Input"
+import { FeedbackFormFooter } from "components/feedback/FeedbackFormFooter"
+import { FeedbackFormHeader } from "components/feedback/FeedbackFormHeader"
 
 export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   return (
     <form className="rounded-corners relative my-5 inline-block flex flex-col gap-y-5 bg-base-100 p-5">
-      <div className="absolute top-0 right-5 -translate-y-1/2">
-        {editing ? <EditIcon /> : <NewIcon />}
-      </div>
-      <h1 className="mt-5 text-xl font-bold text-secondary-800">
-        {editing ? "Editing <feedback name>" : "Create new feedback"}
-      </h1>
+      <FeedbackFormHeader editing={editing} />
       <div>
-        <label htmlFor="text" className="mb-4 flex flex-col text-sm">
-          <span className="mb-1 font-semibold">Feedback title</span>
-          <span className="text-secondary-700">
-            Add a short, descriptive headline
-          </span>
-        </label>
-        <input
-          type="text"
-          id="text"
-          className="rounded-corners w-full border-0 bg-base-300 p-3 outline-primary-600"
+        <InputLabel
+          title="Feedback title"
+          subText="Add a short, descriptive headline"
         />
+        <TextField />
       </div>
       <div>
-        <label htmlFor="category" className="mb-4 block text-sm font-semibold">
-          Category
-        </label>
-        <select
-          id="category"
-          className="rounded-corners w-full border-0 bg-base-300 p-3 outline-primary-600"
-        >
-          <option value="">demo</option>
-        </select>
+        <InputLabel title="Category" />
+        <Select />
       </div>
       {editing && (
         <div>
-          <label htmlFor="status" className="mb-4 block text-sm font-semibold">
-            Status
-          </label>
-          <select
-            id="status"
-            className="rounded-corners w-full border-0 bg-base-300 p-3 outline-primary-600"
-          >
-            <option value="">demo status</option>
-          </select>
+          <InputLabel title="Status" />
+          <Select />
         </div>
       )}
       <div>
-        <label htmlFor="details" className="mb-4 flex flex-col text-sm">
-          <span className="mb-1 font-semibold">Feedback details</span>
-          <span className="text-secondary-700">
-            Include any specific comments on what should be improved, added,
-            etc.
-          </span>
-        </label>
-        <textarea
-          cols={30}
-          rows={7}
-          id="details"
-          className="rounded-corners w-full border-0 bg-base-300 p-3 outline-primary-600"
-        ></textarea>
+        <InputLabel
+          title="Feedback details"
+          subText="Include any specific comments on what should be improved, added,
+            etc."
+        />
+        <Textarea />
       </div>
-      <div className="flex flex-col justify-end gap-y-2 gap-x-2 text-center min-[340px]:flex-row">
-        {editing ? (
-          <>
-            <Button text="Delete" variant="danger" />
-            <Button text="Save changes" variant="accent" />
-          </>
-        ) : (
-          <Button text="Add Feedback" variant="accent" />
-        )}
-        <LinkButton text="Cancel" variant="neutral" href="/" />
-      </div>
+      <FeedbackFormFooter editing={editing} />
     </form>
   )
 }
