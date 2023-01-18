@@ -2,22 +2,39 @@ import { BaseContainer } from "components/common/BaseContainer"
 import { Comment } from "components/comment/Comment"
 import clsx from "clsx"
 import { CommentReplies } from "components/comment/CommentReplies"
-import { demoCommentData } from "shared/data.js"
+import { getCommentCount, getComments } from "utils/data"
 
-export const CommentChain = () => {
+interface CommentChainProps {
+  feedbackId: number
+}
+
+export const CommentChain = (props: CommentChainProps) => {
+  const comments = getComments(props.feedbackId)
+  const commentCount = getCommentCount(comments)
+
+  const commentElements = comments.map(comment => {
+    return (
+      <div key={comment.id}>
+        <Comment
+          content={comment.content}
+          user={comment.user}
+          classExtension={clsx(
+            comment.replies
+              ? "border-b-0 pb-5"
+              : "border-b border-b-base-400 pb-5 last-of-type:border-0 last-of-type:pb-0"
+          )}
+        />
+        {comment.replies && <CommentReplies replies={comment.replies} />}
+      </div>
+    )
+  })
+
   return (
     <BaseContainer classExtension="flex flex-col gap-y-8">
-      <h2 className="text-xl font-bold text-secondary-900">2 Comments</h2>
-      <Comment
-        content={demoCommentData.content}
-        user={demoCommentData.user}
-        classExtension={clsx(
-          demoCommentData.replies.length > 0
-            ? "border-b-0"
-            : "border-b border-b-base-400 pb-5 last-of-type:border-0 last-of-type:pb-0"
-        )}
-      />
-      <CommentReplies replies={demoCommentData.replies} />
+      <h2 className="text-xl font-bold text-secondary-900">
+        {commentCount} Comments
+      </h2>
+      {commentElements}
     </BaseContainer>
   )
 }

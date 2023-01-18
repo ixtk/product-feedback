@@ -27,7 +27,7 @@ const FeedbackPage = () => {
           <Button text="Post Comment" variant="accent" />
         </div>
       </div>
-      <CommentChain />
+      <CommentChain feedbackId={2} />
     </FeedbackPageContainer>
   )
 }
