@@ -2,13 +2,10 @@ import { BaseContainer } from "components/common/BaseContainer"
 import { Tag } from "components/common/Tag"
 import Link from "next/link"
 import clsx from "clsx"
+import { getAllCategories, getRoadmapStatusCount } from "utils/data"
 
-const tagOptions = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"]
-const features = [
-  { status: "planned", categoryCount: 2 },
-  { status: "in-progress", categoryCount: 3 },
-  { status: "live", categoryCount: 1 }
-]
+const tagOptions = getAllCategories()
+const roadmapStatusCount = getRoadmapStatusCount()
 
 export const Sidebar = () => {
   const tagElements = tagOptions.map(tagOptionText => {
@@ -19,25 +16,27 @@ export const Sidebar = () => {
     )
   })
 
-  const featureCountElements = features.map(({ status, categoryCount }) => {
-    return (
-      <div
-        key={status}
-        className="mb-1 flex items-center justify-between gap-x-4 last-of-type:mb-0"
-      >
-        <span
-          className={clsx(
-            "inline-block h-2 w-2 rounded-full",
-            status === "planned" && "bg-accentSecondary",
-            status === "in-progress" && "bg-accentPrimary",
-            status === "live" && "bg-primary-400"
-          )}
-        ></span>
-        <dt className="grow capitalize text-secondary-700">{status}</dt>
-        <dd className="font-bold text-secondary-800">{categoryCount}</dd>
-      </div>
-    )
-  })
+  const featureCountElements = roadmapStatusCount.map(
+    ({ status, feedbackCount }) => {
+      return (
+        <div
+          key={status}
+          className="mb-1 flex items-center justify-between gap-x-4 last-of-type:mb-0"
+        >
+          <span
+            className={clsx(
+              "inline-block h-2 w-2 rounded-full",
+              status === "planned" && "bg-accentSecondary",
+              status === "in-progress" && "bg-accentPrimary",
+              status === "live" && "bg-primary-400"
+            )}
+          ></span>
+          <dt className="grow capitalize text-secondary-700">{status}</dt>
+          <dd className="font-bold text-secondary-800">{feedbackCount}</dd>
+        </div>
+      )
+    }
+  )
 
   return (
     <div className="absolute right-0 flex h-screen w-64 flex-2 flex-col gap-y-5 bg-base-300 p-5 md:static md:h-auto md:w-auto md:flex-row md:gap-x-3 md:p-0 xl:flex-col">

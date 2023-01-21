@@ -36,3 +36,34 @@ export const getFeedbacksByStatus = (
     return feedback.status === feedbackStatus
   })
 }
+
+export const getRoadmapStatusCount = () => {
+  const statusCountObj: Record<string, number> = {}
+  for (const feedback of productRequests) {
+    if (feedback.status in statusCountObj) {
+      statusCountObj[feedback.status] += 1
+    } else {
+      statusCountObj[feedback.status] = 1
+    }
+  }
+
+  const statusCountList = []
+  for (const [status, count] of Object.entries(statusCountObj)) {
+    if (status === "suggestion") continue
+    statusCountList.push({
+      status: status,
+      feedbackCount: count
+    })
+  }
+
+  return statusCountList
+}
+
+export const getAllCategories = () => {
+  const categories = []
+  for (const feedback of productRequests) {
+    if (categories.indexOf(feedback.category) != -1) continue
+    categories.push(feedback.category)
+  }
+  return categories
+}
