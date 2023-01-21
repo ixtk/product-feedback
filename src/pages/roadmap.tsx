@@ -23,12 +23,12 @@ const Roadmap = () => {
         </li>
       </ul>
       <div className="lg:hidden">
-        <FeedbackStack feedbackStatus="Planned" />
+        <FeedbackStack feedbackStatus="planned" />
       </div>
       <div className="hidden grid-flow-col grid-cols-[40%_40%_40%] gap-x-6 overflow-x-scroll pb-5 scrollbar-thin scrollbar-thumb-base-500 lg:grid xl:grid-cols-3 xl:overflow-x-visible">
-        <FeedbackStack feedbackStatus="Planned" />
-        <FeedbackStack feedbackStatus="In-progress" />
-        <FeedbackStack feedbackStatus="Live" />
+        <FeedbackStack feedbackStatus="planned" />
+        <FeedbackStack feedbackStatus="in-progress" />
+        <FeedbackStack feedbackStatus="live" />
       </div>
     </div>
   )

@@ -31,9 +31,8 @@ export const getFeedback = (feedbackId: number) => {
 export const getFeedbacksByStatus = (
   feedbackStatus: string
 ): FeedbackRequest[] | [] => {
-  const status = feedbackStatus.toLowerCase()
   // Try nullish coalescing operator
   return productRequests.filter(feedback => {
-    return feedback.status === status
+    return feedback.status === feedbackStatus
   })
 }

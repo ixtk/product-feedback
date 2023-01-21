@@ -1,17 +1,29 @@
 import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { getFeedbacksByStatus } from "utils/data"
+import clsx from "clsx"
 
 interface FeedbackStackProps {
   feedbackStatus: string
 }
 
-export const FeedbackStack = (props: FeedbackStackProps) => {
-  const feedbacksByStatus = getFeedbacksByStatus(props.feedbackStatus)
+const subTextMap: Record<string, string> = {
+  planned: "Ideas prioritized for research",
+  "in-progress": "Currently being developed",
+  live: "Released features"
+}
+
+export const FeedbackStack = ({ feedbackStatus }: FeedbackStackProps) => {
+  const feedbacksByStatus = getFeedbacksByStatus(feedbackStatus)
   const feedbackCards = feedbacksByStatus.map(feedback => {
     return (
       <div
         key={feedback.title}
-        className="rounded-corners border-t-4 border-t-accentSecondary"
+        className={clsx(
+          "rounded-corners border-t-[5px] bg-base-100",
+          feedbackStatus === "planned" && "border-t-accentSecondary",
+          feedbackStatus === "in-progress" && "border-t-accentPrimary",
+          feedbackStatus === "live" && "border-t-primary-400"
+        )}
       >
         <FeedbackCard {...feedback} />
       </div>
@@ -21,9 +33,11 @@ export const FeedbackStack = (props: FeedbackStackProps) => {
   return (
     <div className="p-3 md:px-5 lg:px-0">
       <h2 className="mt-1 mb-4 flex flex-col text-lg font-semibold text-secondary-800">
-        <span className="hidden lg:inline-block">{props.feedbackStatus}</span>
-        <span className="hidden text-sm font-normal text-secondary-700 lg:inline-block">
-          Ideas prioritized for research
+        <span className="hidden capitalize lg:inline-block">
+          {feedbackStatus} ({feedbacksByStatus.length})
+        </span>
+        <span className="hidden text-base font-normal text-secondary-700 lg:inline-block">
+          {subTextMap[feedbackStatus]}
         </span>
         <span className="lg:hidden">Ideas prioritized for research</span>
       </h2>
