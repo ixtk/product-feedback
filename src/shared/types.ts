@@ -29,5 +29,8 @@ export interface FeedbackRequest {
   upvotes: number
   status: string
   description: string
-  comments?: Comment[]
 }
+
+// export interface FeedbackRequestDetails extends FeedbackRequest {
+//   comments?: Comment[]
+// }

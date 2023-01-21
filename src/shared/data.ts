@@ -1,12 +1,10 @@
-import { FeedbackRequest } from "./types"
-
 export const currentUser = {
   image: "user-images/image-jesse.jpg",
   name: "Jesse Ronda",
   username: "jesse10930"
 }
 
-export const productRequests: FeedbackRequest[] = [
+export const productRequests = [
   {
     id: 1,
     title: "Add tags for solutions",

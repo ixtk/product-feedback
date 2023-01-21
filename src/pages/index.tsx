@@ -2,8 +2,24 @@ import { Banner } from "components/Banner"
 import { Sidebar } from "components/Sidebar"
 import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { MainHeader } from "components/MainHeader"
+import { productRequests } from "shared/data"
 
 const Home = () => {
+  const feedbackCards = productRequests.map(request => {
+    // what to use for keys
+    return (
+      <FeedbackCard
+        key={request.title}
+        id={request.id}
+        title={request.title}
+        category={request.category}
+        upvotes={request.upvotes}
+        status={request.status}
+        description={request.description}
+      />
+    )
+  })
+
   return (
     <div className="md:mx-auto md:max-w-3xl md:py-10 md:px-3 xl:flex xl:max-w-5xl xl:items-start xl:gap-x-6">
       <div className="relative gap-x-3 gap-y-5 md:mb-5 md:flex xl:sticky xl:top-5 xl:w-60 xl:flex-col">
@@ -13,12 +29,7 @@ const Home = () => {
       <div className="xl:grow">
         <MainHeader />
         <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">
-          <FeedbackCard />
-          <FeedbackCard />
-          <FeedbackCard />
-          <FeedbackCard />
-          <FeedbackCard />
-          <FeedbackCard />
+          {feedbackCards}
         </div>
       </div>
     </div>

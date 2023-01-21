@@ -10,7 +10,7 @@ interface CommentChainProps {
 
 export const CommentChain = (props: CommentChainProps) => {
   const comments = getComments(props.feedbackId)
-  const commentCount = getCommentCount(comments)
+  const commentCount = getCommentCount(props.feedbackId)
 
   const commentElements = comments.map(comment => {
     return (
@@ -32,7 +32,7 @@ export const CommentChain = (props: CommentChainProps) => {
   return (
     <BaseContainer classExtension="flex flex-col gap-y-8">
       <h2 className="text-xl font-bold text-secondary-900">
-        {commentCount} Comments
+        {commentCount} Comment(s)
       </h2>
       {commentElements}
     </BaseContainer>
