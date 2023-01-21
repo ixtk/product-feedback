@@ -5,6 +5,7 @@ import React from "react"
 interface ButtonProps {
   text: string
   variant: "accent" | "primary" | "neutral" | "danger"
+  onClick?: () => void
 }
 
 interface LinkButtonProps extends ButtonProps {
@@ -22,7 +23,11 @@ const sharedClasses = (variant: string) => {
 }
 
 export const Button = (props: ButtonProps) => {
-  return <button className={sharedClasses(props.variant)}>{props.text}</button>
+  return (
+    <button className={sharedClasses(props.variant)} onClick={props.onClick}>
+      {props.text}
+    </button>
+  )
 }
 
 export const LinkButton = (props: LinkButtonProps) => {
