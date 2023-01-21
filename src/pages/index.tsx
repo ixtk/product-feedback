@@ -3,6 +3,7 @@ import { Sidebar } from "components/Sidebar"
 import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { MainHeader } from "components/MainHeader"
 import { productRequests } from "shared/data"
+import { NoFeedbackSection } from "components/NoFeedbackSection"
 
 const Home = () => {
   const feedbackCards = productRequests.map(request => {
@@ -27,10 +28,16 @@ const Home = () => {
         <Sidebar />
       </div>
       <div className="xl:grow">
-        <MainHeader />
-        <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">
-          {feedbackCards}
-        </div>
+        {feedbackCards.length > 0 ? (
+          <>
+            <MainHeader />
+            <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">
+              {feedbackCards}
+            </div>
+          </>
+        ) : (
+          <NoFeedbackSection />
+        )}
       </div>
     </div>
   )

@@ -14,7 +14,7 @@ interface LinkButtonProps extends ButtonProps {
 
 const sharedClasses = (variant: string) => {
   return clsx(
-    "rounded-corners px-4 py-2 text-sm font-bold text-base-100",
+    "rounded-corners px-4 py-2 text-sm font-bold text-base-100 inline-block",
     variant === "accent" && "bg-accentPrimary",
     variant === "primary" && "bg-primary-600",
     variant === "neutral" && "bg-secondary-900",

@@ -58,12 +58,3 @@ export const getRoadmapStatusCount = () => {
 
   return statusCountList
 }
-
-export const getAllCategories = () => {
-  const categories = []
-  for (const feedback of productRequests) {
-    if (categories.indexOf(feedback.category) != -1) continue
-    categories.push(feedback.category)
-  }
-  return categories
-}

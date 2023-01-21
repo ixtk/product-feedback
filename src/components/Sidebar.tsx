@@ -2,16 +2,16 @@ import { BaseContainer } from "components/common/BaseContainer"
 import { Tag } from "components/common/Tag"
 import Link from "next/link"
 import clsx from "clsx"
-import { getAllCategories, getRoadmapStatusCount } from "utils/data"
+import { getRoadmapStatusCount } from "utils/data"
+import { categories } from "shared/data"
 
-const tagOptions = getAllCategories()
 const roadmapStatusCount = getRoadmapStatusCount()
 
 export const Sidebar = () => {
-  const tagElements = tagOptions.map(tagOptionText => {
+  const tagElements = categories.map(category => {
     return (
-      <li key={tagOptionText}>
-        <Tag text={tagOptionText} clickable={true} />
+      <li key={category}>
+        <Tag text={category} clickable={true} />
       </li>
     )
   })
