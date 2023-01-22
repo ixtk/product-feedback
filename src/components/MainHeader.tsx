@@ -1,6 +1,6 @@
 import SuggestionsIcon from "assets/icons/suggestions.svg"
-import DropdownArrowIcon from "assets/icons/arrow.svg"
 import { LinkButton } from "components/common/Button"
+import { DropdownMenu } from "components/DropdownMenu"
 
 export const MainHeader = () => {
   return (
@@ -9,12 +9,9 @@ export const MainHeader = () => {
         <SuggestionsIcon />
         <h2 className="inline-block text-lg font-bold">12 Suggestions</h2>
       </div>
-      <div className="text-sm">
-        <span className="mr-2">Sort by:</span>
-        <button className="py-3 font-bold">
-          <span>Most Upvotes</span>
-          <DropdownArrowIcon className="ml-2 inline-block" />
-        </button>
+      <div className="flex text-sm lg:text-base">
+        <span>Sort by:</span>
+        <DropdownMenu />
       </div>
       <LinkButton text="+ Add feedback" variant="accent" href="/feedback/new" />
     </header>
