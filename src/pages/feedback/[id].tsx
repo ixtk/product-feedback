@@ -5,30 +5,20 @@ import { CommentChain } from "components/comment/CommentChain"
 import { FeedbackFormHeader } from "components/FeedbackFormHeader"
 import { useRouter } from "next/router"
 import { getFeedback } from "utils/data"
+import { Textarea, withLabel } from "components/common/Input"
 
 const FeedbackPage = () => {
   const router = useRouter()
   const { id } = router.query
   const feedbackData = getFeedback(Number(id))
+  const CommentField = withLabel(Textarea)
 
   return (
     <FeedbackPageContainer classExtension="flex flex-col gap-y-5">
       <FeedbackFormHeader feedbackEditable={true} />
       <FeedbackCard {...feedbackData} />
       <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5">
-        <label
-          htmlFor="comment"
-          className="text-lg font-bold text-secondary-800"
-        >
-          Add Comment
-        </label>
-        {/* TODO: consistent outline colors */}
-        <textarea
-          id="comment"
-          cols={30}
-          rows={5}
-          className="rounded-corners border-0 bg-base-300"
-        ></textarea>
+        <CommentField labelText="add comment" textLg={true} />
         <div className="flex justify-end">
           <Button text="Post Comment" variant="accent" />
         </div>
