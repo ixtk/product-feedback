@@ -15,7 +15,7 @@ export const CommentHeader = (props: CommentHeaderProps) => {
         <span className="text-secondary-700">@{props.user.username}</span>
       </address>
       <button
-        className="self-start pb-2 pl-2 font-semibold text-primary-600"
+        className="self-start pb-2 pl-2 font-semibold text-primary-600 hover:underline"
         onClick={props.showReplyForm}
       >
         Reply

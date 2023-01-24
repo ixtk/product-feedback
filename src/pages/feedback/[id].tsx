@@ -16,7 +16,7 @@ const FeedbackPage = () => {
   return (
     <FeedbackPageContainer classExtension="flex flex-col gap-y-5">
       <FeedbackFormHeader feedbackEditable={true} />
-      <FeedbackCard {...feedbackData} />
+      <FeedbackCard {...feedbackData} renderLink={false} />
       <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5">
         <CommentField labelText="add comment" textLg={true} />
         <div className="flex justify-end">

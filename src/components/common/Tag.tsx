@@ -1,19 +1,22 @@
+import clsx from "clsx"
+
 interface TagProps {
   text: string
   clickable: boolean
 }
 
+const sharedClasses =
+  "rounded-corners inline-block bg-base-300 py-1 px-4 text-sm font-semibold capitalize text-primary-600"
+
 export const Tag = (props: TagProps) => {
   if (!props.clickable) {
-    return (
-      <div className="rounded-corners inline-block bg-base-300 py-1 px-4 text-sm font-semibold capitalize text-primary-600">
-        {props.text}
-      </div>
-    )
+    return <div className={sharedClasses}>{props.text}</div>
   }
 
   return (
-    <button className="rounded-corners bg-base-300 py-1 px-4 text-sm font-semibold capitalize text-primary-600">
+    <button
+      className={clsx(sharedClasses, "transition-colors hover:bg-primary-200")}
+    >
       {props.text}
     </button>
   )
