@@ -31,6 +31,11 @@ export interface FeedbackRequest {
   description: string
 }
 
+export interface MobileMenuProps {
+  menuOpen: boolean
+  setMenuOpen: Function
+}
+
 // export interface FeedbackRequestDetails extends FeedbackRequest {
 //   comments?: Comment[]
 // }
