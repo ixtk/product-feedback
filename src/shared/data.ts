@@ -5,6 +5,7 @@ export const currentUser = {
 }
 
 export const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"]
+export const statusList = ["Suggestion", "Planned", "In-progress", "Live"]
 
 export const productRequests = [
   {

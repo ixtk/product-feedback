@@ -18,7 +18,7 @@ const FeedbackPage = () => {
       <FeedbackFormHeader feedbackEditable={true} />
       <FeedbackCard {...feedbackData} renderLink={false} />
       <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5">
-        <CommentField labelText="add comment" textLg={true} />
+        <CommentField labelText="add comment" />
         <div className="flex justify-end">
           <Button text="Post Comment" variant="accent" />
         </div>

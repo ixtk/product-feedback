@@ -1,11 +1,11 @@
-import { Select, Textarea, TextField, withLabel } from "components/common/Input"
+import { Textarea, TextField, withLabel } from "components/common/Input"
+import { SelectInput } from "components/common/SelectInput"
 import { FeedbackFormFooter } from "components/feedback/FeedbackFormFooter"
 import { FeedbackFormHeader } from "components/feedback/FeedbackFormHeader"
+import { categories, statusList } from "shared/data"
 
 export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   const TitleField = withLabel(TextField)
-  const CategoryField = withLabel(Select)
-  const StatusField = withLabel(Select)
   const DetailsField = withLabel(Textarea)
 
   return (
@@ -16,8 +16,10 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
           Add a short, descriptive headline
         </span>
       </TitleField>
-      <CategoryField labelText="category" />
-      {editing && <StatusField labelText="Status" />}
+      <div className="gap-x-4 sm:flex">
+        <SelectInput listData={categories} labelText="categories" />
+        {editing && <SelectInput listData={statusList} labelText="status" />}
+      </div>
       <DetailsField labelText="feedback details">
         <span className="text-secondary-700">
           Include any specific comments on what should be improved, added, etc.
