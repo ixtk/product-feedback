@@ -1,6 +1,5 @@
-import { Menu } from "@headlessui/react"
+import { Menu, Transition } from "@headlessui/react"
 import DropdownArrowIcon from "assets/icons/arrow.svg"
-import clsx from "clsx"
 
 const sortOptions = [
   "mostUpvotes",
@@ -20,16 +19,9 @@ export const DropdownMenu = () => {
   const menuItems = sortOptions.map(option => {
     return (
       <Menu.Item key={option}>
-        {({ active }) => (
-          <button
-            className={clsx(
-              "w-full px-4 py-3 text-left text-secondary-900",
-              active && "bg-base-300 "
-            )}
-          >
-            {optionsTextMap[option]}
-          </button>
-        )}
+        <button className="w-full px-4 py-3 text-left text-secondary-900 transition-colors duration-75 ui-active:bg-base-300">
+          {optionsTextMap[option]}
+        </button>
       </Menu.Item>
     )
   })
@@ -37,13 +29,22 @@ export const DropdownMenu = () => {
   return (
     <div className="relative">
       <Menu>
-        <Menu.Button className="px-4 font-semibold">
+        <Menu.Button className="flex items-center px-4 font-semibold">
           <span>Most upvotes</span>
-          <DropdownArrowIcon className="ml-2 inline-block" />
+          <DropdownArrowIcon className="ml-2 inline-block transition-transform ui-open:rotate-180" />
         </Menu.Button>
-        <Menu.Items className="rounded-corners absolute top-8 w-40 divide-y divide-base-300 border-[1px] border-base-400 bg-base-100 text-secondary-700 shadow-lg">
-          {menuItems}
-        </Menu.Items>
+        <Transition
+          enter="transition duration-100 ease-out"
+          enterFrom="transform scale-95 opacity-0"
+          enterTo="transform scale-100 opacity-100"
+          leave="transition duration-75 ease-out"
+          leaveFrom="transform scale-100 opacity-100"
+          leaveTo="transform scale-95 opacity-0"
+        >
+          <Menu.Items className="rounded-corners absolute top-[calc(100%+10px)] w-40 divide-y divide-base-300 border-[1px] border-base-400 bg-base-100 text-secondary-700 shadow-lg">
+            {menuItems}
+          </Menu.Items>
+        </Transition>
       </Menu>
     </div>
   )
