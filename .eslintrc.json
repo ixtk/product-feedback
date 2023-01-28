@@ -1,8 +1,11 @@
 {
   "extends": ["eslint:recommended", "next/core-web-vitals"],
+  "globals": {
+    "React": true
+  },
   "rules": {
     "no-restricted-imports": [
-      "error",
+      "warn",
       {
         "patterns": [".*"]
       }

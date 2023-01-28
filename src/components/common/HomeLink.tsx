@@ -1,6 +1,5 @@
 import Link from "next/link"
 import ArrowIcon from "assets/icons/arrow.svg"
-import React from "react"
 
 export const HomeLink = () => {
   return (

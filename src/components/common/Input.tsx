@@ -17,13 +17,11 @@ export const Textarea = () => {
 }
 
 interface WrappedComponentProps {
-  // eslint-disable-next-line no-undef
   children?: React.ReactNode
   labelText: string
   value?: string
 }
 
-// eslint-disable-next-line no-undef
 export const withLabel = (Component: React.FunctionComponent) => {
   return function WrappedComponent(props: WrappedComponentProps) {
     return (

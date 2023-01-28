@@ -1,5 +1,4 @@
 import { LinkButton } from "components/common/Button"
-import React from "react"
 import { HomeLink } from "components/common/HomeLink"
 
 interface FeedbackFormHeaderProps {
