@@ -16,7 +16,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
           Add a short, descriptive headline
         </span>
       </TitleField>
-      <div className="gap-x-4 sm:flex">
+      <div className="flex flex-col gap-x-4 gap-y-4 sm:flex-row sm:gap-y-0">
         <SelectInput listData={categories} labelText="categories" />
         {editing && <SelectInput listData={statusList} labelText="status" />}
       </div>

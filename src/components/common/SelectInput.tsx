@@ -25,8 +25,9 @@ export const SelectInput = (props: SelectInputProps) => {
             leave="transition duration-75 ease-out"
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-95 opacity-0"
+            className="relative z-50"
           >
-            <Listbox.Options className="rounded-corners absolute left-0 top-[calc(100%+5px)] right-0 z-50 divide-y divide-base-400 overflow-hidden border-[1px] border-base-400 bg-base-100 shadow-lg">
+            <Listbox.Options className="rounded-corners absolute left-0 top-[calc(100%+5px)] right-0 divide-y divide-base-400 overflow-hidden border-[1px] border-base-400 bg-base-100 shadow-lg">
               {props.listData.map(data => {
                 return (
                   <Listbox.Option key={data} value={data}>

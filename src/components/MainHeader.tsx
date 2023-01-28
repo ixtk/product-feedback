@@ -10,7 +10,7 @@ export const MainHeader = () => {
         <h2 className="inline-block text-lg font-bold">12 Suggestions</h2>
       </div>
       <div className="flex text-sm lg:text-base">
-        <span>Sort by:</span>
+        <span className="hidden min-[380px]:inline-block">Sort by:</span>
         <DropdownMenu />
       </div>
       <LinkButton text="+ Add feedback" variant="accent" href="/feedback/new" />

@@ -29,7 +29,7 @@ export const DropdownMenu = () => {
   return (
     <div className="relative">
       <Menu>
-        <Menu.Button className="flex items-center px-4 font-semibold">
+        <Menu.Button className="flex items-center pr-4 font-semibold min-[380px]:px-4">
           <span>Most upvotes</span>
           <DropdownArrowIcon className="ml-2 inline-block transition-transform ui-open:rotate-180" />
         </Menu.Button>
