@@ -4,7 +4,7 @@ export const currentUser = {
   username: "jesse10930"
 }
 
-export const categories = ["all", "ui", "ux", "enhancement", "bug", "feature"]
+export const categories = ["all", "UI", "UX", "enhancement", "bug", "feature"]
 export const statusList = ["suggestion", "planned", "in-progress", "live"]
 
 export const productRequests = [
