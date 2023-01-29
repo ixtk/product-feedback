@@ -6,7 +6,7 @@ interface SelectInputProps {
   labelText: string
 }
 
-export const SelectInput = (props: SelectInputProps) => {
+export const SelectList = (props: SelectInputProps) => {
   return (
     <div className="grow">
       <label className="flex flex-col text-sm md:text-base">

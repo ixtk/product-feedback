@@ -1,11 +1,11 @@
 import { LinkButton } from "components/common/Button"
 import { HomeLink } from "components/common/HomeLink"
 
-interface FeedbackFormHeaderProps {
+interface FeedbackPageHeaderProps {
   feedbackEditable?: boolean
 }
 
-export const FeedbackFormHeader = (props: FeedbackFormHeaderProps) => {
+export const FeedbackPageHeader = (props: FeedbackPageHeaderProps) => {
   return (
     <header className="flex items-center justify-between">
       <div className="text-secondary-900">

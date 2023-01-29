@@ -1,5 +1,5 @@
-import { Textarea, TextField, withLabel } from "components/common/Input"
-import { SelectInput } from "components/common/SelectInput"
+import { Textarea, TextField, withLabel } from "components/input/Input"
+import { SelectList } from "components/input/SelectList"
 import { FeedbackFormFooter } from "components/feedback/FeedbackFormFooter"
 import { FeedbackFormHeader } from "components/feedback/FeedbackFormHeader"
 import { categories, statusList } from "shared/data"
@@ -9,7 +9,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   const DetailsField = withLabel(Textarea)
 
   return (
-    <form className="rounded-corners relative my-5 inline-block flex flex-col gap-y-5 bg-base-100 p-5 shadow-sm">
+    <form className="rounded-corners relative inline-block flex flex-col gap-y-5 bg-base-100 p-5 shadow-sm">
       <FeedbackFormHeader editing={editing} />
       <TitleField labelText="feedback title">
         <span className="text-secondary-700">
@@ -17,8 +17,8 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
         </span>
       </TitleField>
       <div className="flex flex-col gap-x-4 gap-y-4 sm:flex-row sm:gap-y-0">
-        <SelectInput listData={categories} labelText="categories" />
-        {editing && <SelectInput listData={statusList} labelText="status" />}
+        <SelectList listData={categories} labelText="category" />
+        {editing && <SelectList listData={statusList} labelText="status" />}
       </div>
       <DetailsField labelText="feedback details">
         <span className="text-secondary-700">

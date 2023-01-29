@@ -2,7 +2,7 @@ import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { getFeedbacksByStatus } from "utils/data"
 import clsx from "clsx"
 
-interface FeedbackStackProps {
+interface FeedbacksByStatusProps {
   feedbackStatus: string
 }
 
@@ -12,7 +12,9 @@ const subTextMap: Record<string, string> = {
   live: "Released features"
 }
 
-export const FeedbackStack = ({ feedbackStatus }: FeedbackStackProps) => {
+export const FeedbacksByStatus = ({
+  feedbackStatus
+}: FeedbacksByStatusProps) => {
   const feedbacksByStatus = getFeedbacksByStatus(feedbackStatus)
   const feedbackCards = feedbacksByStatus.map(feedback => {
     return (

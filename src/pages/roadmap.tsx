@@ -1,10 +1,10 @@
-import { FeedbackStack } from "components/feedback/FeedbackStack"
-import { RoadmapHeader } from "components/RoadmapHeader"
+import { FeedbacksByStatus } from "components/feedback/FeedbacksByStatus"
+import { RoadmapPageHeader } from "components/RoadmapPageHeader"
 
 const Roadmap = () => {
   return (
     <div className="md:mx-auto md:max-w-7xl lg:py-10 lg:px-6">
-      <RoadmapHeader />
+      <RoadmapPageHeader />
       <ul className="flex border-b border-b-base-400 text-center lg:hidden">
         <li className="flex-1 border-b-4 border-b-accentPrimary">
           <button className="w-full py-4 text-sm font-bold text-secondary-900">
@@ -23,12 +23,12 @@ const Roadmap = () => {
         </li>
       </ul>
       <div className="lg:hidden">
-        <FeedbackStack feedbackStatus="planned" />
+        <FeedbacksByStatus feedbackStatus="planned" />
       </div>
       <div className="hidden grid-flow-col grid-cols-[40%_40%_40%] gap-x-6 overflow-x-scroll pb-5 scrollbar-thin scrollbar-thumb-base-500 lg:grid xl:grid-cols-3 xl:overflow-x-visible">
-        <FeedbackStack feedbackStatus="planned" />
-        <FeedbackStack feedbackStatus="in-progress" />
-        <FeedbackStack feedbackStatus="live" />
+        <FeedbacksByStatus feedbackStatus="planned" />
+        <FeedbacksByStatus feedbackStatus="in-progress" />
+        <FeedbacksByStatus feedbackStatus="live" />
       </div>
     </div>
   )

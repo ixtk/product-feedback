@@ -15,7 +15,7 @@ const optionsTextMap: Record<string, string> = {
   leastComments: "Least comments"
 }
 
-export const DropdownMenu = () => {
+export const SortByMenu = () => {
   const menuItems = sortOptions.map(option => {
     return (
       <Menu.Item key={option}>

@@ -3,7 +3,7 @@ import { Sidebar } from "components/Sidebar"
 import { MobileMenu } from "components/MobileMenu"
 import { useState } from "react"
 import { FeedbackList } from "components/feedback/FeedbackList"
-import { MainHeader } from "components/MainHeader"
+import { HomePageHeader } from "components/HomePageHeader"
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -20,7 +20,7 @@ const Home = () => {
         </div>
       </div>
       <div className="xl:grow">
-        <MainHeader />
+        <HomePageHeader />
         <FeedbackList />
       </div>
     </div>

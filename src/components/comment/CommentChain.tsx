@@ -30,7 +30,7 @@ export const CommentChain = (props: CommentChainProps) => {
   })
 
   return (
-    <BaseContainer classExtension="flex flex-col gap-y-6 pb-8">
+    <BaseContainer classExtension="flex flex-col gap-y-6">
       <h2 className="text-xl font-bold text-secondary-900">
         {commentCount} Comment(s)
       </h2>

@@ -28,7 +28,7 @@ export const FeedbackCard = ({
       <div className="col-start-1 col-end-3 md:col-start-2 md:col-end-3 md:row-start-1">
         {renderLink ? (
           <Link href={`/feedback/${props.id}`} className="group inline-block">
-            {<CardTitle />}
+            <CardTitle />
           </Link>
         ) : (
           <CardTitle />
