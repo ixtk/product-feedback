@@ -9,7 +9,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   const DetailsField = withLabel(Textarea)
 
   return (
-    <form className="rounded-corners relative my-5 inline-block flex flex-col gap-y-5 bg-base-100 p-5">
+    <form className="rounded-corners relative my-5 inline-block flex flex-col gap-y-5 bg-base-100 p-5 shadow-sm">
       <FeedbackFormHeader editing={editing} />
       <TitleField labelText="feedback title">
         <span className="text-secondary-700">

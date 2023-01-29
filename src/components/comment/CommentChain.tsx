@@ -14,14 +14,14 @@ export const CommentChain = (props: CommentChainProps) => {
 
   const commentElements = comments.map(comment => {
     return (
-      <div key={comment.id}>
+      <div key={comment.id} className="group">
         <Comment
           content={comment.content}
           user={comment.user}
           classExtension={clsx(
             comment.replies
-              ? "border-b-0 pb-5"
-              : "border-b border-b-base-400 pb-5 last-of-type:border-0 last-of-type:pb-0"
+              ? "border-b-0 pb-8"
+              : "border-b border-b-base-400 pb-6 group-last-of-type:border-0 group-last-of-type:pb-0"
           )}
         />
         {comment.replies && <CommentReplies replies={comment.replies} />}
@@ -30,7 +30,7 @@ export const CommentChain = (props: CommentChainProps) => {
   })
 
   return (
-    <BaseContainer classExtension="flex flex-col gap-y-8">
+    <BaseContainer classExtension="flex flex-col gap-y-6 pb-8">
       <h2 className="text-xl font-bold text-secondary-900">
         {commentCount} Comment(s)
       </h2>

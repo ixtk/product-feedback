@@ -8,7 +8,10 @@ interface BaseContainerProps {
 export const BaseContainer = (props: BaseContainerProps) => {
   return (
     <div
-      className={clsx(props.classExtension, "rounded-corners bg-base-100 p-5")}
+      className={clsx(
+        props.classExtension,
+        "rounded-corners bg-base-100 p-5 shadow-sm"
+      )}
     >
       {props.children}
     </div>

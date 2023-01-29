@@ -1,4 +1,3 @@
-import { FeedbackPageContainer } from "components/FeedbackPageContainer"
 import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { Button } from "components/common/Button"
 import { CommentChain } from "components/comment/CommentChain"
@@ -14,17 +13,18 @@ const FeedbackPage = () => {
   const CommentField = withLabel(Textarea)
 
   return (
-    <FeedbackPageContainer classExtension="flex flex-col gap-y-5">
+    <div className="mx-auto flex flex-col gap-y-5 px-3 pt-6 pb-12 md:max-w-3xl">
       <FeedbackFormHeader feedbackEditable={true} />
       <FeedbackCard {...feedbackData} renderLink={false} />
-      <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5">
+      <CommentChain feedbackId={Number(id)} />
+      <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5 shadow-sm">
         <CommentField labelText="add comment" />
         <div className="flex justify-end">
           <Button text="Post Comment" variant="accent" />
         </div>
       </div>
-      <CommentChain feedbackId={Number(id)} />
-    </FeedbackPageContainer>
+    </div>
   )
 }
+
 export default FeedbackPage
