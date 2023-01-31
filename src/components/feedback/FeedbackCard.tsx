@@ -24,7 +24,7 @@ export const FeedbackCard = ({
   }
 
   return (
-    <article className="rounded-corners grid grid-cols-2 items-center gap-y-5 bg-base-100 p-5 shadow-sm md:mx-auto md:w-full md:max-w-none md:grid-cols-[auto_1fr_auto] md:gap-y-0 md:gap-x-5">
+    <article className="rounded-corners grid grid-cols-2 grid-rows-1 items-center gap-y-5 bg-base-100 p-5 shadow-sm md:mx-auto md:w-full md:max-w-none md:grid-cols-[auto_1fr_auto] md:gap-y-0 md:gap-x-5">
       <div className="col-start-1 col-end-3 md:col-start-2 md:col-end-3 md:row-start-1">
         {renderLink ? (
           <Link href={`/feedback/${props.id}`} className="group inline-block">

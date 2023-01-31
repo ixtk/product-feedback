@@ -43,7 +43,7 @@ export const FeedbacksByStatus = ({
         </span>
         <span className="lg:hidden">{subTextMap[feedbackStatus]}</span>
       </h2>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-[repeat(auto-fill,minmax(40%,auto))] lg:grid-cols-1">
+      <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-[repeat(auto-fill,minmax(40%,auto))] lg:grid-cols-1">
         {feedbackCards}
       </div>
     </div>

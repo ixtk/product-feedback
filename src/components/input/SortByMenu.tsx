@@ -19,7 +19,7 @@ export const SortByMenu = () => {
   const menuItems = sortOptions.map(option => {
     return (
       <Menu.Item key={option}>
-        <button className="w-full px-3 py-2 text-left text-secondary-900 transition-colors duration-75 ui-active:bg-base-300">
+        <button className="w-full px-3 py-2 text-left text-secondary-900 ui-active:bg-base-300">
           {optionsTextMap[option]}
         </button>
       </Menu.Item>
