@@ -1,19 +1,9 @@
 export const TextField = () => {
-  return (
-    <input
-      type="text"
-      className="rounded-corners mt-2 w-full border-0 bg-base-300 p-3 outline-primary-600"
-    />
-  )
+  return <input type="text" />
 }
 
 export const Textarea = () => {
-  return (
-    <textarea
-      className="rounded-corners mt-2 w-full border-0 bg-base-300 p-3 outline-primary-600"
-      rows={7}
-    />
-  )
+  return <textarea rows={7} />
 }
 
 interface WrappedComponentProps {

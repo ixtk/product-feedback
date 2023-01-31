@@ -14,7 +14,7 @@ export const SelectList = (props: SelectInputProps) => {
       </label>
       <div className="rounded-corners relative mt-2 border-0 bg-base-300">
         <Listbox value="demo">
-          <Listbox.Button className="rounded-corners flex w-full items-center justify-between p-3 text-left outline-1 outline-primary-600 focus-visible:outline">
+          <Listbox.Button className="rounded-corners flex w-full items-center justify-between border border-base-400 px-3 py-2 text-left focus:border-primary-600 focus:border-primary-600 focus:outline-0 focus:ring-1 focus:ring-primary-600">
             <span>{props.listData.at(0)}</span>
             <ArrowIcon className="transition-transform ui-open:rotate-180" />
           </Listbox.Button>
@@ -27,11 +27,11 @@ export const SelectList = (props: SelectInputProps) => {
             leaveTo="transform scale-95 opacity-0"
             className="relative z-50"
           >
-            <Listbox.Options className="rounded-corners absolute left-0 top-[calc(100%+5px)] right-0 divide-y divide-base-400 overflow-hidden border-[1px] border-base-400 bg-base-100 shadow-lg">
+            <Listbox.Options className="rounded-corners absolute left-0 top-[calc(100%+5px)] right-0 divide-y divide-base-400 overflow-hidden border border-base-400 bg-base-100 shadow-lg">
               {props.listData.map(data => {
                 return (
                   <Listbox.Option key={data} value={data}>
-                    <button className="w-full p-3 text-left text-secondary-900 transition-colors duration-75 ui-active:bg-base-300">
+                    <button className="w-full px-3 py-2 text-left text-secondary-900 transition-colors duration-75 ui-active:bg-base-300">
                       {data}
                     </button>
                   </Listbox.Option>
