@@ -6,7 +6,7 @@ interface TagProps {
 }
 
 const sharedClasses =
-  "rounded-corners inline-block bg-base-300 py-1 px-4 text-sm font-semibold capitalize text-primary-600"
+  "rounded-corners inline-block bg-base-300 py-1 px-4 text-sm font-medium capitalize text-primary-600"
 
 export const Tag = (props: TagProps) => {
   if (!props.clickable) {

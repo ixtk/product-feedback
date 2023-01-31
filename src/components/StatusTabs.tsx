@@ -14,7 +14,7 @@ export const StatusTabs = () => {
             <Tab
               key={status}
               className={clsx(
-                "flex-1 border-b-4 border-b-base-300 py-3 text-sm font-semibold capitalize md:text-base",
+                "flex-1 border-b-4 border-b-base-300 py-3 text-sm font-medium capitalize sm:text-base",
 
                 status === "planned" && "ui-selected:border-b-accentSecondary",
                 status === "in-progress" &&

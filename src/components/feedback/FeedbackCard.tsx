@@ -17,7 +17,7 @@ export const FeedbackCard = ({
 
   const CardTitle = () => {
     return (
-      <h3 className="mb-3 inline-block font-bold text-secondary-800 underline decoration-base-100 transition duration-150 group-hover:text-primary-600 group-hover:decoration-primary-600 md:text-lg">
+      <h3 className="mb-3 inline-block text-lg font-bold text-secondary-800 underline decoration-base-100 transition duration-150 group-hover:text-primary-600 group-hover:decoration-primary-600 md:text-lg">
         {props.title}
       </h3>
     )
@@ -33,7 +33,7 @@ export const FeedbackCard = ({
         ) : (
           <CardTitle />
         )}
-        <p className="mb-3 text-sm text-secondary-700 md:text-base">
+        <p className="text mb-3 text-secondary-700 md:text-base">
           {props.description}
         </p>
         <Tag text={props.category} clickable={false} />

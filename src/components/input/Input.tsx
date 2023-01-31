@@ -16,7 +16,7 @@ export const withLabel = (Component: React.FunctionComponent) => {
   return function WrappedComponent(props: WrappedComponentProps) {
     return (
       <label className="flex flex-col text-sm md:text-base">
-        <span className="mb-1 font-semibold capitalize">{props.labelText}</span>
+        <span className="mb-1 font-medium capitalize">{props.labelText}</span>
         {props.children}
         <Component />
       </label>

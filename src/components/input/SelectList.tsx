@@ -10,7 +10,7 @@ export const SelectList = (props: SelectInputProps) => {
   return (
     <div className="grow">
       <label className="flex flex-col text-sm md:text-base">
-        <span className="mb-1 font-semibold capitalize">{props.labelText}</span>
+        <span className="mb-1 font-medium capitalize">{props.labelText}</span>
       </label>
       <div className="rounded-corners relative mt-2 border-0 bg-base-300">
         <Listbox value="demo">

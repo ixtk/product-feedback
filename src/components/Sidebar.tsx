@@ -50,7 +50,7 @@ export const Sidebar = () => {
           <h2 className="text-lg font-bold text-secondary-900">Roadmap</h2>
           <Link
             href="/roadmap"
-            className="text-sm font-semibold text-primary-600 hover:underline"
+            className="font-medium text-primary-600 hover:underline"
           >
             View
           </Link>

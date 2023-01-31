@@ -33,8 +33,8 @@ export const FeedbacksByStatus = ({
   })
 
   return (
-    <div className="p-3 md:px-5 lg:px-0">
-      <h2 className="mt-1 mb-4 flex flex-col text-lg font-semibold text-secondary-800">
+    <div className="p-4 md:px-5 lg:px-0">
+      <h2 className="mt-1 mb-4 flex flex-col text-lg font-bold text-secondary-800">
         <span className="hidden capitalize lg:inline-block">
           {feedbackStatus} ({feedbacksByStatus.length})
         </span>
