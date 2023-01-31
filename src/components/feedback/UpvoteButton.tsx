@@ -1,10 +1,24 @@
 import UpvoteArrowIcon from "assets/icons/arrow.svg"
+import clsx from "clsx"
 
-export const UpvoteButton = ({ upvoteCount }: { upvoteCount: number }) => {
+interface UpvoteButtonProps {
+  upvoteCount: number
+  onRoadmapCard: boolean
+}
+
+export const UpvoteButton = ({
+  onRoadmapCard = false,
+  ...props
+}: UpvoteButtonProps) => {
   return (
-    <button className="rounded-corners col-start-1 row-start-2 flex items-center gap-2 justify-self-start bg-base-300 py-2 px-4 text-sm font-medium text-secondary-900 transition-colors hover:bg-primary-200 md:row-start-1 md:w-11 md:flex-col md:self-start md:px-2">
+    <button
+      className={clsx(
+        "rounded-corners col-start-1 row-start-2 flex items-center gap-2 justify-self-start bg-base-300 py-2 px-4 text-sm font-medium text-secondary-900 transition-colors hover:bg-primary-200",
+        !onRoadmapCard && "md:w-11 md:flex-col md:self-start md:px-2"
+      )}
+    >
       <UpvoteArrowIcon className="rotate-180 text-primary-600" />
-      <span className="font-bold text-secondary-800">{upvoteCount}</span>
+      <span className="font-bold text-secondary-800">{props.upvoteCount}</span>
     </button>
   )
 }

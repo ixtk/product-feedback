@@ -27,7 +27,7 @@ export const FeedbacksByStatus = ({
           feedbackStatus === "live" && "border-t-primary-400"
         )}
       >
-        <FeedbackCard {...feedback} />
+        <FeedbackCard {...feedback} roadmapCard={true} />
       </div>
     )
   })
