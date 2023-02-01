@@ -13,7 +13,7 @@ export const UpvoteButton = ({
   return (
     <button
       className={clsx(
-        "rounded-corners col-start-1 row-start-2 flex items-center gap-2 justify-self-start bg-base-300 py-2 px-4 text-sm font-medium text-secondary-900 transition-colors hover:bg-primary-200",
+        "rounded-corners col-start-1 row-start-2 flex items-center gap-2 justify-self-start border border-primary-200 bg-base-300 py-2 px-4 text-sm font-medium text-secondary-900 transition-colors duration-100 hover:bg-primary-200",
         !onRoadmapCard && "md:w-11 md:flex-col md:self-start md:px-2"
       )}
     >

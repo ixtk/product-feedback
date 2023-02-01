@@ -45,7 +45,7 @@ export const FeedbackCard = ({
         <p className="text mb-3 text-secondary-700 md:text-base">
           {props.description}
         </p>
-        <Tag text={props.category} clickable={false} />
+        <Tag text={props.category} />
       </div>
       <CommentCount commentCount={commentCount} />
     </article>

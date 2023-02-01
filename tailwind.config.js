@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     colors: {
       primary: {
+        700: "hsl(230, 76%, 49%)",
         600: "hsl(230, 76%, 59%)",
         400: "hsl(204, 94%, 68%)",
         200: "hsl(230, 100%, 94%)"
@@ -22,9 +23,15 @@ module.exports = {
         200: "hsl(230, 60%, 98%)",
         100: "hsl(0, 0%, 100%)"
       },
-      accentPrimary: "hsl(282, 83%, 52%)",
+      accentPrimary: {
+        900: "hsl(282, 83%, 42%)",
+        800: "hsl(282, 83%, 52%)"
+      },
       accentSecondary: "hsl(14, 83%, 74%)",
-      danger: "hsl(0, 67%, 53%)"
+      danger: {
+        900: "hsl(0, 67%, 42%)",
+        800: "hsl(0, 67%, 53%)"
+      }
     },
     extend: {
       fontFamily: {

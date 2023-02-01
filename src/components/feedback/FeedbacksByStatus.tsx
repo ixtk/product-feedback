@@ -23,7 +23,7 @@ export const FeedbacksByStatus = ({
         className={clsx(
           "rounded-corners border-t-[5px] bg-base-100",
           feedbackStatus === "planned" && "border-t-accentSecondary",
-          feedbackStatus === "in-progress" && "border-t-accentPrimary",
+          feedbackStatus === "in-progress" && "border-t-accentPrimary-800",
           feedbackStatus === "live" && "border-t-primary-400"
         )}
       >

@@ -18,7 +18,7 @@ export const StatusTabs = () => {
 
                 status === "planned" && "ui-selected:border-b-accentSecondary",
                 status === "in-progress" &&
-                  "ui-selected:border-b-accentPrimary",
+                  "ui-selected:border-b-accentPrimary-800",
                 status === "live" && "ui-selected:border-b-primary-400"
               )}
             >

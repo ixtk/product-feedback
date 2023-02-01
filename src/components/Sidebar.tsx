@@ -1,5 +1,5 @@
 import { BaseContainer } from "components/common/BaseContainer"
-import { Tag } from "components/common/Tag"
+import { TagButton } from "components/common/Tag"
 import Link from "next/link"
 import clsx from "clsx"
 import { getRoadmapStatusCount } from "utils/data"
@@ -8,10 +8,10 @@ import { categories } from "shared/data"
 const roadmapStatusCount = getRoadmapStatusCount()
 
 export const Sidebar = () => {
-  const tagElements = categories.map(category => {
+  const tagButtonElements = categories.map(category => {
     return (
       <li key={category}>
-        <Tag text={category} clickable={true} />
+        <TagButton text={category} />
       </li>
     )
   })
@@ -27,7 +27,7 @@ export const Sidebar = () => {
             className={clsx(
               "inline-block h-2 w-2 rounded-full",
               status === "planned" && "bg-accentSecondary",
-              status === "in-progress" && "bg-accentPrimary",
+              status === "in-progress" && "bg-accentPrimary-800",
               status === "live" && "bg-primary-400"
             )}
           ></span>
@@ -42,7 +42,7 @@ export const Sidebar = () => {
     <>
       <BaseContainer classExtension="md:basis-2/4">
         <menu className="flex flex-wrap gap-3 md:content-start">
-          {tagElements}
+          {tagButtonElements}
         </menu>
       </BaseContainer>
       <BaseContainer classExtension="md:basis-2/4">

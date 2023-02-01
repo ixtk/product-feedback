@@ -13,11 +13,11 @@ interface LinkButtonProps extends ButtonProps {
 
 const sharedClasses = (variant: string) => {
   return clsx(
-    "rounded-corners px-4 py-2 text-sm md:text-base font-medium text-base-100 inline-block",
-    variant === "accent" && "bg-accentPrimary",
-    variant === "primary" && "bg-primary-600",
-    variant === "neutral" && "bg-secondary-900",
-    variant === "danger" && "bg-danger"
+    "rounded-corners px-4 transition-colors duration-100 py-2 text-sm md:text-base font-medium text-base-100 inline-block",
+    variant === "accent" && "bg-accentPrimary-800 hover:bg-accentPrimary-900",
+    variant === "primary" && "bg-primary-600 hover:bg-primary-700",
+    variant === "neutral" && "bg-secondary-900 hover:bg-secondary-700",
+    variant === "danger" && "bg-danger-800 hover:bg-danger-900"
   )
 }
 
