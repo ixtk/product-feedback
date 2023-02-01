@@ -14,7 +14,7 @@ const FeedbackPage = () => {
   const CommentField = withLabel(Textarea)
 
   return (
-    <Layout pageTitle={feedbackData.title}>
+    <Layout pageTitle={feedbackData?.title ?? "Suggestion"}>
       <div className="mx-auto flex flex-col gap-y-5 px-3 pt-6 pb-12 md:max-w-3xl">
         <FeedbackPageHeader feedbackEditable={true} />
         <FeedbackCard {...feedbackData} renderLink={false} />
