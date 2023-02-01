@@ -5,6 +5,7 @@ import { FeedbackPageHeader } from "components/FeedbackPageHeader"
 import { useRouter } from "next/router"
 import { getFeedback } from "utils/data"
 import { Textarea, withLabel } from "components/input/Input"
+import { Layout } from "components/Layout"
 
 const FeedbackPage = () => {
   const router = useRouter()
@@ -13,17 +14,19 @@ const FeedbackPage = () => {
   const CommentField = withLabel(Textarea)
 
   return (
-    <div className="mx-auto flex flex-col gap-y-5 px-3 pt-6 pb-12 md:max-w-3xl">
-      <FeedbackPageHeader feedbackEditable={true} />
-      <FeedbackCard {...feedbackData} renderLink={false} />
-      <CommentChain feedbackId={Number(id)} />
-      <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5 shadow-sm">
-        <CommentField labelText="add comment" />
-        <div className="flex justify-end">
-          <Button text="Post Comment" variant="accent" />
+    <Layout pageTitle={feedbackData.title}>
+      <div className="mx-auto flex flex-col gap-y-5 px-3 pt-6 pb-12 md:max-w-3xl">
+        <FeedbackPageHeader feedbackEditable={true} />
+        <FeedbackCard {...feedbackData} renderLink={false} />
+        <CommentChain feedbackId={Number(id)} />
+        <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5 shadow-sm">
+          <CommentField labelText="add comment" />
+          <div className="flex justify-end">
+            <Button text="Post Comment" variant="accent" />
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 
