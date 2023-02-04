@@ -4,14 +4,22 @@ import Link from "next/link"
 import clsx from "clsx"
 import { getRoadmapStatusCount } from "utils/data"
 import { categories } from "shared/data"
+import { Dispatch, SetStateAction } from "react"
 
 const roadmapStatusCount = getRoadmapStatusCount()
 
-export const Sidebar = () => {
+interface SidebarProps {
+  setFeedbackCategory: Dispatch<SetStateAction<string>>
+}
+
+export const Sidebar = (props: SidebarProps) => {
   const tagButtonElements = categories.map(category => {
     return (
       <li key={category}>
-        <TagButton text={category} />
+        <TagButton
+          text={category}
+          setFeedbackCategory={props.setFeedbackCategory}
+        />
       </li>
     )
   })
