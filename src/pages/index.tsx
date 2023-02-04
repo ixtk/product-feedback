@@ -5,10 +5,15 @@ import { useState } from "react"
 import { FeedbackList } from "components/feedback/FeedbackList"
 import { HomePageHeader } from "components/HomePageHeader"
 import { Layout } from "components/Layout"
+import { SortBy } from "shared/types"
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [feedbackCategory, setFeedbackCategory] = useState("all")
+  const [sortBy, setSortBy] = useState<SortBy>({
+    field: "upvotes",
+    ascending: false
+  })
 
   return (
     <Layout pageTitle="Home">
@@ -23,8 +28,8 @@ const Home = () => {
           </div>
         </div>
         <div className="xl:grow">
-          <HomePageHeader />
-          <FeedbackList category={feedbackCategory} />
+          <HomePageHeader sortBy={sortBy} setSortBy={setSortBy} />
+          <FeedbackList category={feedbackCategory} sortBy={sortBy} />
         </div>
       </div>
     </Layout>

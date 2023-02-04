@@ -1,28 +1,37 @@
 import { NoFeedbackSection } from "components/feedback/NoFeedbackSection"
 import { productRequests } from "shared/data"
 import { FeedbackCard } from "components/feedback/FeedbackCard"
-import { FeedbackRequest } from "shared/types"
+import { Feedback, SortBy } from "shared/types"
+import { sortFeedbacks } from "utils/data"
 
-export const FeedbackList = ({ category }: { category: string }) => {
-  const filterByCategory = (feedbacks: FeedbackRequest[]) => {
+interface FeedbackListProps {
+  category: string
+  sortBy: SortBy
+}
+
+export const FeedbackList = ({ category, sortBy }: FeedbackListProps) => {
+  const filterByCategory = (feedbacks: Feedback[]) => {
     if (category === "all") return productRequests
     return feedbacks.filter(request => request.category === category)
   }
 
-  const feedbackCards = filterByCategory(productRequests).map(request => {
-    // what to use for keys
-    return (
-      <FeedbackCard
-        key={request.title}
-        id={request.id}
-        title={request.title}
-        category={request.category}
-        upvotes={request.upvotes}
-        status={request.status}
-        description={request.description}
-      />
-    )
-  })
+  const filteredFeedbacks = filterByCategory(productRequests)
+  const feedbackCards = sortFeedbacks(filteredFeedbacks, sortBy).map(
+    request => {
+      // what to use for keys
+      return (
+        <FeedbackCard
+          key={request.title}
+          id={request.id}
+          title={request.title}
+          category={request.category}
+          upvotes={request.upvotes}
+          status={request.status}
+          description={request.description}
+        />
+      )
+    }
+  )
 
   if (feedbackCards.length <= 0)
     return <NoFeedbackSection category={category} />

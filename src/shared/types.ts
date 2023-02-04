@@ -22,7 +22,7 @@ export interface Comment {
   replies?: CommentReply[]
 }
 
-export interface FeedbackRequest {
+export interface Feedback {
   id: number
   title: string
   category: string
@@ -36,6 +36,11 @@ export interface MobileMenuProps {
   setMenuOpen: Function
 }
 
-// export interface FeedbackRequestDetails extends FeedbackRequest {
-//   comments?: Comment[]
-// }
+export interface SortBy {
+  field: string
+  ascending: boolean
+}
+
+export interface FeedbackDetailed extends Feedback {
+  comments?: Comment[]
+}

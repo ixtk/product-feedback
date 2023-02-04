@@ -1,9 +1,9 @@
 import { productRequests } from "shared/data"
-import { FeedbackRequest } from "shared/types"
+import { Feedback, FeedbackDetailed, SortBy } from "shared/types"
 
 export const getComments = (feedbackId: number) => {
   const feedback = productRequests.filter(
-    (feedback: FeedbackRequest) => feedback.id === feedbackId
+    (feedback: Feedback) => feedback.id === feedbackId
   )
 
   // optionally access comments or return []
@@ -24,13 +24,13 @@ export const getCommentCount = (feedbackId: number) => {
 
 export const getFeedback = (feedbackId: number) => {
   return productRequests.filter(
-    (feedback: FeedbackRequest) => feedback.id === feedbackId
+    (feedback: Feedback) => feedback.id === feedbackId
   )[0]
 }
 
 export const getFeedbacksByStatus = (
   feedbackStatus: string
-): FeedbackRequest[] | [] => {
+): Feedback[] | [] => {
   // Try nullish coalescing operator
   return productRequests.filter(feedback => {
     return feedback.status === feedbackStatus
@@ -57,4 +57,24 @@ export const getRoadmapStatusCount = () => {
   }
 
   return statusCountList
+}
+
+export const sortFeedbacks = (
+  feedbacks: FeedbackDetailed[],
+  sortBy: SortBy
+) => {
+  return feedbacks.sort((a, b) => {
+    const attr = sortBy.field as keyof FeedbackDetailed
+    if (attr === "comments") {
+      const commentCountA = getCommentCount(a.id)
+      const commentCountB = getCommentCount(b.id)
+
+      if (commentCountA < commentCountB) return sortBy.ascending ? -1 : 1
+      else if (commentCountA > commentCountB) return sortBy.ascending ? 1 : -1
+    }
+
+    if (a.upvotes < b.upvotes) return sortBy.ascending ? -1 : 1
+    else if (a.upvotes > b.upvotes) return sortBy.ascending ? 1 : -1
+    return 0
+  })
 }
