@@ -3,7 +3,7 @@ import { LinkButton } from "components/common/Button"
 
 export const NoFeedbackSection = ({ category }: { category: string }) => {
   return (
-    <div className="rounded-corners mx-4 mt-4 grid place-content-center gap-y-2 bg-base-100 md:mx-0">
+    <div className="rounded-corners mx-4 mt-6 grid place-content-center gap-y-2 bg-base-100 shadow-sm md:mx-0">
       <section className="max-w-md px-4 py-10 text-center">
         <NoFeedbackImage className="mx-auto mb-6" />
         <h2 className="my-3 text-xl font-bold">

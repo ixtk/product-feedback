@@ -31,11 +31,6 @@ export interface Feedback {
   description: string
 }
 
-export interface MobileMenuProps {
-  menuOpen: boolean
-  setMenuOpen: Function
-}
-
 export interface SortBy {
   field: string
   ascending: boolean

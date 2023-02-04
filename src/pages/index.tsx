@@ -24,7 +24,11 @@ const Home = () => {
             <Sidebar setFeedbackCategory={setFeedbackCategory} />
           </div>
           <div className="md:hidden">
-            <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+            <MobileMenu
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
+              setFeedbackCategory={setFeedbackCategory}
+            />
           </div>
         </div>
         <div className="xl:grow">
