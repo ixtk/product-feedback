@@ -28,7 +28,11 @@ const Home = () => {
           </div>
         </div>
         <div className="xl:grow">
-          <HomePageHeader sortBy={sortBy} setSortBy={setSortBy} />
+          <HomePageHeader
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            category={feedbackCategory}
+          />
           <FeedbackList category={feedbackCategory} sortBy={sortBy} />
         </div>
       </div>
