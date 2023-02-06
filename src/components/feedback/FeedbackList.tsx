@@ -5,18 +5,23 @@ import { Feedback, SortBy } from "shared/types"
 import { sortFeedbacks } from "utils/data"
 
 interface FeedbackListProps {
-  category: string
+  selectedCategories: string[]
   sortBy: SortBy
 }
 
-export const FeedbackList = ({ category, sortBy }: FeedbackListProps) => {
+export const FeedbackList = ({
+  selectedCategories,
+  sortBy
+}: FeedbackListProps) => {
   const filterByCategory = (feedbacks: Feedback[]) => {
-    if (category === "all") return productRequests
-    return feedbacks.filter(request => request.category === category)
+    if (selectedCategories.length === 1) return productRequests
+    return feedbacks.filter(request =>
+      selectedCategories.includes(request.category)
+    )
   }
 
   const filteredFeedbacks = filterByCategory(productRequests)
-  const feedbackCards = sortFeedbacks(filteredFeedbacks, sortBy).map(
+  const sortedFeedbackCards = sortFeedbacks(filteredFeedbacks, sortBy).map(
     request => {
       // what to use for keys
       return (
@@ -33,12 +38,11 @@ export const FeedbackList = ({ category, sortBy }: FeedbackListProps) => {
     }
   )
 
-  if (feedbackCards.length <= 0)
-    return <NoFeedbackSection category={category} />
+  if (sortedFeedbackCards.length <= 0) return <NoFeedbackSection />
 
   return (
     <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">
-      {feedbackCards}
+      {sortedFeedbackCards}
     </div>
   )
 }

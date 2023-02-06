@@ -22,9 +22,11 @@ export const getCommentCount = (feedbackId: number) => {
   return count
 }
 
-export const getFeedbackByCategory = (category: string) => {
-  if (category === "all") return productRequests
-  return productRequests.filter(request => request.category === category)
+export const getFeedbackByCategories = (categories: string[]) => {
+  if (categories.length === 1) return productRequests
+  return productRequests.filter(request =>
+    categories.includes(request.category)
+  )
 }
 
 export const getFeedback = (feedbackId: number) => {

@@ -12,7 +12,7 @@ const jost = Jost({
 interface MobileMenuProps {
   menuOpen: boolean
   setMenuOpen: Function
-  setFeedbackCategory: Dispatch<SetStateAction<string>>
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>
 }
 
 export const MobileMenu = (props: MobileMenuProps) => {
@@ -26,7 +26,7 @@ export const MobileMenu = (props: MobileMenuProps) => {
       )}
     >
       <Dialog.Panel className="absolute top-[4.5rem] right-0 z-50 flex h-screen w-64 flex-col gap-y-5 bg-base-300 p-5">
-        <Sidebar setFeedbackCategory={props.setFeedbackCategory} />
+        <Sidebar setSelectedCategories={props.setSelectedCategories} />
       </Dialog.Panel>
       <div
         className={clsx(

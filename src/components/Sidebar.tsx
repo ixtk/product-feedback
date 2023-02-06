@@ -1,5 +1,5 @@
 import { BaseContainer } from "components/common/BaseContainer"
-import { TagButton } from "components/common/Tag"
+import { CategoryCheckbox } from "components/input/CategoryCheckbox"
 import Link from "next/link"
 import clsx from "clsx"
 import { getRoadmapStatusCount } from "utils/data"
@@ -9,16 +9,16 @@ import { Dispatch, SetStateAction } from "react"
 const roadmapStatusCount = getRoadmapStatusCount()
 
 interface SidebarProps {
-  setFeedbackCategory: Dispatch<SetStateAction<string>>
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>
 }
 
 export const Sidebar = (props: SidebarProps) => {
   const tagButtonElements = categories.map(category => {
     return (
       <li key={category}>
-        <TagButton
+        <CategoryCheckbox
           text={category}
-          setFeedbackCategory={props.setFeedbackCategory}
+          setSelectedCategories={props.setSelectedCategories}
         />
       </li>
     )
