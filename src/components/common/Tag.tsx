@@ -1,4 +1,3 @@
-import clsx from "clsx"
 import { Dispatch, SetStateAction } from "react"
 
 interface TagButtonProps {
@@ -6,27 +5,35 @@ interface TagButtonProps {
   setFeedbackCategory: Dispatch<SetStateAction<string>>
 }
 
-const sharedClasses =
-  "rounded-corners inline-block bg-base-300 py-1 px-4 text-sm font-medium capitalize text-primary-600"
-
 export const Tag = ({ text }: { text: string }) => {
-  return <div className={sharedClasses}>{text}</div>
+  return (
+    <div className="rounded-corners inline-block bg-base-300 py-1 px-3 text-sm font-medium capitalize text-primary-600">
+      {text}
+    </div>
+  )
 }
 
 export const TagButton = (props: TagButtonProps) => {
-  const handleClick = (category: string) => {
-    props.setFeedbackCategory(category)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.setFeedbackCategory(e.target.value)
   }
 
   return (
-    <button
-      className={clsx(
-        sharedClasses,
-        "border border-primary-200 transition-colors duration-100 hover:bg-primary-200"
-      )}
-      onClick={() => handleClick(props.text)}
-    >
-      {props.text}
-    </button>
+    <>
+      <label
+        htmlFor={props.text}
+        className="rounded-corners flex cursor-pointer items-center justify-center gap-x-2 border border-primary-200 bg-base-300 px-2 py-1 text-sm font-medium capitalize text-primary-600"
+      >
+        {props.text}
+        <input
+          type="checkbox"
+          id={props.text}
+          className="h-3.5 w-3.5 cursor-pointer rounded-sm border-base-500 text-primary-500"
+          value={props.text}
+          name="category"
+          onChange={handleChange}
+        />
+      </label>
+    </>
   )
 }
