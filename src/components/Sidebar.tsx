@@ -13,7 +13,7 @@ interface SidebarProps {
 }
 
 export const Sidebar = (props: SidebarProps) => {
-  const tagButtonElements = categories.map(category => {
+  const categoryCheckboxes = categories.map(category => {
     return (
       <li key={category}>
         <CategoryCheckbox
@@ -50,7 +50,7 @@ export const Sidebar = (props: SidebarProps) => {
     <>
       <BaseContainer classExtension="md:basis-2/4">
         <menu className="flex flex-wrap gap-3 md:content-start">
-          {tagButtonElements}
+          {categoryCheckboxes}
         </menu>
       </BaseContainer>
       <BaseContainer classExtension="md:basis-2/4">

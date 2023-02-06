@@ -1,7 +1,7 @@
 import { Banner } from "components/Banner"
 import { Sidebar } from "components/Sidebar"
 import { MobileMenu } from "components/MobileMenu"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { FeedbackList } from "components/feedback/FeedbackList"
 import { HomePageHeader } from "components/HomePageHeader"
 import { Layout } from "components/Layout"
@@ -14,10 +14,6 @@ const Home = () => {
     field: "upvotes",
     ascending: false
   })
-
-  useEffect(() => {
-    console.log(selectedCategories)
-  }, [selectedCategories])
 
   return (
     <Layout pageTitle="Home">
