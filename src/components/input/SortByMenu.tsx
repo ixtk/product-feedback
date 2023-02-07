@@ -1,5 +1,7 @@
 import { Menu, Transition } from "@headlessui/react"
 import DropdownArrowIcon from "assets/icons/arrow.svg"
+import { SortBy } from "shared/types"
+import { Dispatch, SetStateAction } from "react"
 
 const sortOptions = [
   "mostUpvotes",
@@ -15,11 +17,30 @@ const optionsTextMap: Record<string, string> = {
   leastComments: "Least comments"
 }
 
-export const SortByMenu = () => {
+const optionStateMap: Record<string, SortBy> = {
+  mostUpvotes: { field: "upvotes", ascending: false },
+  leastUpvotes: { field: "upvotes", ascending: true },
+  mostComments: { field: "comments", ascending: false },
+  leastComments: { field: "comments", ascending: true }
+}
+
+interface SortByMenuProps {
+  sortBy: SortBy
+  setSortBy: Dispatch<SetStateAction<SortBy>>
+}
+
+export const SortByMenu = ({ sortBy, setSortBy }: SortByMenuProps) => {
   const menuItems = sortOptions.map(option => {
+    const handleClick = (option: string) => {
+      setSortBy(optionStateMap[option])
+    }
+
     return (
       <Menu.Item key={option}>
-        <button className="w-full px-3 py-2 text-left text-secondary-900 ui-active:bg-base-300">
+        <button
+          onClick={() => handleClick(option)}
+          className="w-full px-3 py-2 text-left text-secondary-900 ui-active:bg-base-300"
+        >
           {optionsTextMap[option]}
         </button>
       </Menu.Item>
@@ -29,8 +50,10 @@ export const SortByMenu = () => {
   return (
     <div className="relative">
       <Menu>
-        <Menu.Button className="flex items-center pr-4 font-medium font-medium min-[380px]:px-4 min-[380px]:py-1">
-          <span>Most upvotes</span>
+        <Menu.Button className="flex items-center pr-4 font-medium font-medium capitalize xs:px-4 xs:py-1">
+          <span>
+            {sortBy.ascending ? "least" : "most"} {sortBy.field}
+          </span>
           <DropdownArrowIcon className="ml-2 inline-block transition-transform ui-open:rotate-180" />
         </Menu.Button>
         <Transition

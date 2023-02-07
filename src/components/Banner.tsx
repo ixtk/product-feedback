@@ -1,8 +1,12 @@
 import HamburgerIcon from "assets/icons/hamburger.svg"
 import CloseIcon from "assets/icons/close.svg"
-import { MobileMenuProps } from "shared/types"
 
-export const Banner = (props: MobileMenuProps) => {
+interface BannerProps {
+  menuOpen: boolean
+  setMenuOpen: Function
+}
+
+export const Banner = (props: BannerProps) => {
   const toggleMobileMenu = () => {
     props.setMenuOpen((prevState: boolean) => !prevState)
   }

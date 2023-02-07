@@ -8,6 +8,7 @@ module.exports = {
       primary: {
         700: "hsl(230, 76%, 49%)",
         600: "hsl(230, 76%, 59%)",
+        500: "hsl(230, 76%, 65%)",
         400: "hsl(204, 94%, 68%)",
         200: "hsl(230, 100%, 94%)"
       },
@@ -34,6 +35,9 @@ module.exports = {
       }
     },
     extend: {
+      screens: {
+        xs: "390px"
+      },
       fontFamily: {
         sans: ["var(--font-jost)", ...fontFamily.sans]
       },

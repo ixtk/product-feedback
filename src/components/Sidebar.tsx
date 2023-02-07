@@ -1,17 +1,27 @@
 import { BaseContainer } from "components/common/BaseContainer"
-import { TagButton } from "components/common/Tag"
+import { CategoryCheckbox } from "components/input/CategoryCheckbox"
 import Link from "next/link"
 import clsx from "clsx"
 import { getRoadmapStatusCount } from "utils/data"
 import { categories } from "shared/data"
+import { Dispatch, SetStateAction } from "react"
 
 const roadmapStatusCount = getRoadmapStatusCount()
 
-export const Sidebar = () => {
-  const tagButtonElements = categories.map(category => {
+interface SidebarProps {
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>
+  selectedCategories: string[]
+}
+
+export const Sidebar = (props: SidebarProps) => {
+  const categoryCheckboxes = categories.map(category => {
     return (
       <li key={category}>
-        <TagButton text={category} />
+        <CategoryCheckbox
+          text={category}
+          selectedCategories={props.selectedCategories}
+          setSelectedCategories={props.setSelectedCategories}
+        />
       </li>
     )
   })
@@ -42,7 +52,7 @@ export const Sidebar = () => {
     <>
       <BaseContainer classExtension="md:basis-2/4">
         <menu className="flex flex-wrap gap-3 md:content-start">
-          {tagButtonElements}
+          {categoryCheckboxes}
         </menu>
       </BaseContainer>
       <BaseContainer classExtension="md:basis-2/4">

@@ -1,9 +1,19 @@
 import { NoFeedbackSection } from "components/feedback/NoFeedbackSection"
-import { productRequests } from "shared/data"
 import { FeedbackCard } from "components/feedback/FeedbackCard"
+import { SortBy } from "shared/types"
+import { getFeedbackByCategories, sortFeedbacks } from "utils/data"
 
-export const FeedbackList = () => {
-  const feedbackCards = productRequests.map(request => {
+interface FeedbackListProps {
+  selectedCategories: string[]
+  sortBy: SortBy
+}
+
+export const FeedbackList = (props: FeedbackListProps) => {
+  const filteredFeedbacks = getFeedbackByCategories(props.selectedCategories)
+  const sortedFeedbackCards = sortFeedbacks(
+    filteredFeedbacks,
+    props.sortBy
+  ).map(request => {
     // what to use for keys
     return (
       <FeedbackCard
@@ -18,11 +28,11 @@ export const FeedbackList = () => {
     )
   })
 
-  if (feedbackCards.length <= 0) return <NoFeedbackSection />
+  if (sortedFeedbackCards.length <= 0) return <NoFeedbackSection />
 
   return (
     <div className="flex flex-col gap-y-4 px-4 py-6 md:px-0">
-      {feedbackCards}
+      {sortedFeedbackCards}
     </div>
   )
 }

@@ -2,11 +2,11 @@ import { Tag } from "components/common/Tag"
 import { UpvoteButton } from "components/feedback/UpvoteButton"
 import { CommentCount } from "components/comment/CommentCount"
 import Link from "next/link"
-import { FeedbackRequest } from "shared/types"
+import { Feedback } from "shared/types"
 import { getCommentCount } from "utils/data"
 import clsx from "clsx"
 
-interface FeedbackCardProps extends FeedbackRequest {
+interface FeedbackCardProps extends Feedback {
   renderLink?: boolean
   roadmapCard?: boolean
 }
