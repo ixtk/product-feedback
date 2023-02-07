@@ -35,6 +35,9 @@ module.exports = {
       }
     },
     extend: {
+      screens: {
+        xs: "390px"
+      },
       fontFamily: {
         sans: ["var(--font-jost)", ...fontFamily.sans]
       },

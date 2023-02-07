@@ -50,7 +50,7 @@ export const SortByMenu = ({ sortBy, setSortBy }: SortByMenuProps) => {
   return (
     <div className="relative">
       <Menu>
-        <Menu.Button className="flex items-center pr-4 font-medium font-medium capitalize min-[380px]:px-4 min-[380px]:py-1 sm:w-48">
+        <Menu.Button className="flex items-center pr-4 font-medium font-medium capitalize xs:px-4 xs:py-1">
           <span>
             {sortBy.ascending ? "least" : "most"} {sortBy.field}
           </span>
