@@ -1,12 +1,17 @@
-import { Dispatch, SetStateAction, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 interface CategoryCheckboxProps {
   text: string
   setSelectedCategories: Dispatch<SetStateAction<string[]>>
+  selectedCategories: string[]
 }
 
 export const CategoryCheckbox = (props: CategoryCheckboxProps) => {
   const [checked, setChecked] = useState(false)
+
+  useEffect(() => {
+    setChecked(props.selectedCategories.includes(props.text))
+  }, [props.selectedCategories, props.text])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.setSelectedCategories(prevState => {

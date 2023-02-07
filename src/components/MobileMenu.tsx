@@ -1,8 +1,6 @@
 import { Dialog } from "@headlessui/react"
 import { Jost } from "@next/font/google"
-import { Sidebar } from "components/Sidebar"
 import clsx from "clsx"
-import { Dispatch, SetStateAction } from "react"
 
 const jost = Jost({
   variable: "--font-jost",
@@ -12,7 +10,7 @@ const jost = Jost({
 interface MobileMenuProps {
   menuOpen: boolean
   setMenuOpen: Function
-  setSelectedCategories: Dispatch<SetStateAction<string[]>>
+  children: React.ReactNode
 }
 
 export const MobileMenu = (props: MobileMenuProps) => {
@@ -26,7 +24,7 @@ export const MobileMenu = (props: MobileMenuProps) => {
       )}
     >
       <Dialog.Panel className="absolute top-[4.5rem] right-0 z-50 flex h-screen w-64 flex-col gap-y-5 bg-base-300 p-5">
-        <Sidebar setSelectedCategories={props.setSelectedCategories} />
+        {props.children}
       </Dialog.Panel>
       <div
         className={clsx(

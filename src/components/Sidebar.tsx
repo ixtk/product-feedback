@@ -10,6 +10,7 @@ const roadmapStatusCount = getRoadmapStatusCount()
 
 interface SidebarProps {
   setSelectedCategories: Dispatch<SetStateAction<string[]>>
+  selectedCategories: string[]
 }
 
 export const Sidebar = (props: SidebarProps) => {
@@ -18,6 +19,7 @@ export const Sidebar = (props: SidebarProps) => {
       <li key={category}>
         <CategoryCheckbox
           text={category}
+          selectedCategories={props.selectedCategories}
           setSelectedCategories={props.setSelectedCategories}
         />
       </li>
