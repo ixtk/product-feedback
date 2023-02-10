@@ -2,17 +2,18 @@ import { BaseContainer } from "components/common/BaseContainer"
 import { Comment } from "components/comment/Comment"
 import clsx from "clsx"
 import { CommentReplies } from "components/comment/CommentReplies"
-import { getCommentCount, getComments } from "utils/data"
+import { getCommentCount } from "utils/data"
+import { Comment as CommentType } from "shared/types"
 
 interface CommentChainProps {
   feedbackId: number
+  comments: CommentType[]
 }
 
 export const CommentChain = (props: CommentChainProps) => {
-  const comments = getComments(props.feedbackId)
   const commentCount = getCommentCount(props.feedbackId)
 
-  const commentElements = comments.map(comment => {
+  const commentElements = props.comments.map(comment => {
     return (
       <div key={comment.id} className="group">
         <Comment
