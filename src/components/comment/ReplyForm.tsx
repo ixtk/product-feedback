@@ -1,21 +1,50 @@
 import { Button } from "components/common/Button"
+import { FormEvent, useState } from "react"
+import { CommentReply } from "shared/types"
 
 interface ReplyFormProps {
+  setReplies: any
   replyingTo: string
   closeReplyForm: () => void
+  setReplyFormVisible: any
 }
 
 export const ReplyForm = (props: ReplyFormProps) => {
+  const [newReply, setNewReply] = useState("")
+
+  const submitReply = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    props.setReplies((prevReplies: CommentReply[]) => {
+      return [
+        ...prevReplies,
+        {
+          content: newReply,
+          replyingTo: props.replyingTo,
+          user: {
+            image: "user-images/image-anne.jpg",
+            name: "Demo User",
+            username: "demouser"
+          }
+        }
+      ]
+    })
+    setNewReply("")
+    props.setReplyFormVisible(false)
+  }
+
   return (
-    <div className="mt-5 flex flex-col gap-y-3">
+    <form className="mt-5 flex flex-col gap-y-3" onSubmit={submitReply}>
       <textarea
         rows={4}
+        value={newReply}
+        onChange={e => setNewReply(e.target.value)}
         placeholder={`Reply to @${props.replyingTo}...`}
-      ></textarea>
+        autoFocus={true}
+      />
       <div className="flex justify-end gap-3">
         <Button text="Cancel" variant="danger" onClick={props.closeReplyForm} />
         <Button text="Post Reply" variant="accent" />
       </div>
-    </div>
+    </form>
   )
 }

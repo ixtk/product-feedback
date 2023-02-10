@@ -1,7 +1,5 @@
 import { BaseContainer } from "components/common/BaseContainer"
 import { Comment } from "components/comment/Comment"
-import clsx from "clsx"
-import { CommentReplies } from "components/comment/CommentReplies"
 import { getCommentCount } from "utils/data"
 import { Comment as CommentType } from "shared/types"
 
@@ -19,13 +17,8 @@ export const CommentChain = (props: CommentChainProps) => {
         <Comment
           content={comment.content}
           user={comment.user}
-          classExtension={clsx(
-            comment.replies
-              ? "border-b-0 pb-8"
-              : "border-b border-b-base-400 pb-6 group-last-of-type:border-0 group-last-of-type:pb-0"
-          )}
+          replies={comment?.replies ?? []}
         />
-        {comment.replies && <CommentReplies replies={comment.replies} />}
       </div>
     )
   })
