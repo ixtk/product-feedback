@@ -1,6 +1,6 @@
 import { Button } from "components/common/Button"
 import { FormEvent, useState } from "react"
-import { CommentReply } from "shared/types"
+import { Comment } from "shared/types"
 
 interface ReplyFormProps {
   setReplies: any
@@ -14,7 +14,7 @@ export const ReplyForm = (props: ReplyFormProps) => {
 
   const submitReply = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    props.setReplies((prevReplies: CommentReply[]) => {
+    props.setReplies((prevReplies: Comment[]) => {
       return [
         ...prevReplies,
         {
@@ -43,7 +43,7 @@ export const ReplyForm = (props: ReplyFormProps) => {
       />
       <div className="flex justify-end gap-3">
         <Button text="Cancel" variant="danger" onClick={props.closeReplyForm} />
-        <Button text="Post Reply" variant="accent" />
+        <Button type="submit" text="Post Reply" variant="accent" />
       </div>
     </form>
   )

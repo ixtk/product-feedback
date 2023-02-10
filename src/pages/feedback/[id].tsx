@@ -25,7 +25,6 @@ const FeedbackPage = () => {
     e.preventDefault()
     // TODO: change user info based on current user
     setComments([
-      ...comments,
       {
         id: 2,
         content: newComment,
@@ -34,7 +33,8 @@ const FeedbackPage = () => {
           name: "Demo User",
           username: "demouser"
         }
-      }
+      },
+      ...comments
     ])
     setNewComment("")
   }
@@ -44,9 +44,8 @@ const FeedbackPage = () => {
       <div className="mx-auto flex flex-col gap-y-5 px-3 pt-6 pb-12 md:max-w-3xl">
         <FeedbackPageHeader feedbackEditable={true} />
         <FeedbackCard {...feedbackData} renderLink={false} />
-        <CommentChain feedbackId={Number(feedbackId)} comments={comments} />
         <form
-          className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5 shadow-sm"
+          className="rounded-corners flex flex-col gap-y-3 bg-base-100 p-5 shadow-sm"
           onSubmit={submitComment}
         >
           <label>
@@ -54,7 +53,7 @@ const FeedbackPage = () => {
               add comment
             </span>
             <textarea
-              rows={7}
+              rows={5}
               value={newComment}
               onChange={e => setNewComment(e.target.value)}
             />
@@ -63,6 +62,7 @@ const FeedbackPage = () => {
             <Button text="Post Comment" variant="accent" />
           </div>
         </form>
+        <CommentChain feedbackId={Number(feedbackId)} comments={comments} />
       </div>
     </Layout>
   )

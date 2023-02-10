@@ -5,6 +5,7 @@ interface ButtonProps {
   text: string
   variant: "accent" | "primary" | "neutral" | "danger"
   onClick?: () => void
+  type?: "button" | "submit"
 }
 
 interface LinkButtonProps extends ButtonProps {
@@ -21,9 +22,13 @@ const sharedClasses = (variant: string) => {
   )
 }
 
-export const Button = (props: ButtonProps) => {
+export const Button = ({ type = "button", ...props }: ButtonProps) => {
   return (
-    <button className={sharedClasses(props.variant)} onClick={props.onClick}>
+    <button
+      className={sharedClasses(props.variant)}
+      type={type}
+      onClick={props.onClick}
+    >
       {props.text}
     </button>
   )

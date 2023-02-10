@@ -1,7 +1,7 @@
 import { productRequests } from "shared/data"
-import { Feedback, FeedbackDetailed, SortBy } from "shared/types"
+import { Comment, Feedback, FeedbackDetailed, SortBy } from "shared/types"
 
-export const getComments = (feedbackId: number) => {
+export const getComments = (feedbackId: number): Comment[] | [] => {
   const feedback = productRequests.filter(
     (feedback: Feedback) => feedback.id === feedbackId
   )
