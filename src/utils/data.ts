@@ -1,7 +1,7 @@
 import { productRequests } from "shared/data"
 import { Comment, Feedback, FeedbackDetailed, SortBy } from "shared/types"
 
-export const getComments = (feedbackId: number): Comment[] | [] => {
+export const getComments = (feedbackId: string): Comment[] | [] => {
   const feedback = productRequests.filter(
     (feedback: Feedback) => feedback.id === feedbackId
   )
@@ -10,7 +10,7 @@ export const getComments = (feedbackId: number): Comment[] | [] => {
   return feedback[0]?.comments ?? []
 }
 
-export const getCommentCount = (feedbackId: number) => {
+export const getCommentCount = (feedbackId: string) => {
   const comments = getComments(feedbackId)
   let count = 0
   for (let comment of comments) {
@@ -29,7 +29,7 @@ export const getFeedbackByCategories = (categories: string[]) => {
   )
 }
 
-export const getFeedback = (feedbackId: number) => {
+export const getFeedback = (feedbackId: string) => {
   return productRequests.filter(
     (feedback: Feedback) => feedback.id === feedbackId
   )[0]
@@ -84,4 +84,8 @@ export const sortFeedbacks = (
     else if (a.upvotes > b.upvotes) return sortBy.ascending ? 1 : -1
     return 0
   })
+}
+
+export const getRandomId = () => {
+  return Math.random().toString(36).slice(2, 12)
 }

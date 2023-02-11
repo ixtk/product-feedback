@@ -1,9 +1,10 @@
 import { Button } from "components/common/Button"
-import { FormEvent, useState } from "react"
-import { Comment } from "shared/types"
+import { Dispatch, FormEvent, SetStateAction, useState } from "react"
+import { CommentReply } from "shared/types"
+import { getRandomId } from "utils/data"
 
 interface ReplyFormProps {
-  setReplies: any
+  setReplies: Dispatch<SetStateAction<CommentReply[]>>
   replyingTo: string
   closeReplyForm: () => void
   setReplyFormVisible: any
@@ -14,10 +15,11 @@ export const ReplyForm = (props: ReplyFormProps) => {
 
   const submitReply = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    props.setReplies((prevReplies: Comment[]) => {
+    props.setReplies((prevReplies: CommentReply[]) => {
       return [
         ...prevReplies,
         {
+          id: getRandomId(),
           content: newReply,
           replyingTo: props.replyingTo,
           user: {

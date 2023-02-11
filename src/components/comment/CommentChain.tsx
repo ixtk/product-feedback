@@ -4,7 +4,7 @@ import { getCommentCount } from "utils/data"
 import { Comment as CommentType } from "shared/types"
 
 interface CommentChainProps {
-  feedbackId: number
+  feedbackId: string
   comments: CommentType[]
 }
 

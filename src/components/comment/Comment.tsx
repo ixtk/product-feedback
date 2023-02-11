@@ -1,11 +1,11 @@
 import { CommentHeader } from "components/comment/CommentHeader"
-import { BaseComment, Comment as CommentType } from "shared/types"
+import { BaseComment, CommentReply } from "shared/types"
 import { ReplyForm } from "components/comment/ReplyForm"
 import { useState } from "react"
 import { CommentReplies } from "components/comment/CommentReplies"
 
 interface CommentProps extends BaseComment {
-  replies: CommentType[]
+  replies: CommentReply[]
   classExtension?: string
 }
 

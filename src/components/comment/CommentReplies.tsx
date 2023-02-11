@@ -1,9 +1,9 @@
 import { Comment } from "components/comment/Comment"
-import { Comment as CommentType } from "shared/types"
+import { CommentReply } from "shared/types"
 import clsx from "clsx"
 
 interface CommentRepliesProps {
-  replies: CommentType[]
+  replies: CommentReply[]
 }
 
 export const CommentReplies = (props: CommentRepliesProps) => {
@@ -14,10 +14,9 @@ export const CommentReplies = (props: CommentRepliesProps) => {
       )}
     >
       {props.replies.map(commentReply => {
-        // this key is not unique
         return (
           <Comment
-            key={commentReply.user.username}
+            key={commentReply.id}
             replies={commentReply.replies ?? []}
             content={commentReply.content}
             user={commentReply.user}

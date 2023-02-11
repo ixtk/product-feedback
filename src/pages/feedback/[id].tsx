@@ -3,21 +3,22 @@ import { Button } from "components/common/Button"
 import { CommentChain } from "components/comment/CommentChain"
 import { FeedbackPageHeader } from "components/FeedbackPageHeader"
 import { useRouter } from "next/router"
-import { getComments, getFeedback } from "utils/data"
+import { getComments, getFeedback, getRandomId } from "utils/data"
 import { Layout } from "components/Layout"
 import { FormEvent, useEffect, useState } from "react"
 import { Comment as CommentType } from "shared/types"
 
 const FeedbackPage = () => {
   const router = useRouter()
-  const { id: feedbackId } = router.query
-  const feedbackData = getFeedback(Number(feedbackId))
+  const { id } = router.query
+  const feedbackId = id as string
+  const feedbackData = getFeedback(feedbackId)
   const [comments, setComments] = useState<CommentType[]>([])
   const [newComment, setNewComment] = useState("")
 
   useEffect(() => {
     if (router.isReady) {
-      setComments(getComments(Number(feedbackId)))
+      setComments(getComments(feedbackId))
     }
   }, [router.isReady, feedbackId])
 
@@ -26,7 +27,7 @@ const FeedbackPage = () => {
     // TODO: change user info based on current user
     setComments([
       {
-        id: 2,
+        id: getRandomId(),
         content: newComment,
         user: {
           image: "user-images/image-thomas.jpg",
@@ -59,10 +60,10 @@ const FeedbackPage = () => {
             />
           </label>
           <div className="ml-auto">
-            <Button text="Post Comment" variant="accent" />
+            <Button type="submit" text="Post Comment" variant="accent" />
           </div>
         </form>
-        <CommentChain feedbackId={Number(feedbackId)} comments={comments} />
+        <CommentChain feedbackId={feedbackId} comments={comments} />
       </div>
     </Layout>
   )
