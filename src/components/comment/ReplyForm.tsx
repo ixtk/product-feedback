@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from "react"
 import { CommentReply } from "shared/types"
 import { getRandomId } from "utils/data"
 import { CommentForm } from "components/comment/CommentForm"
+import { SubmitHandler } from "react-hook-form"
 
 interface ReplyFormProps {
   setReplies: Dispatch<SetStateAction<CommentReply[]>>
@@ -11,14 +12,18 @@ interface ReplyFormProps {
   setReplyFormVisible: any
 }
 
+interface Inputs {
+  reply: string
+}
+
 export const ReplyForm = (props: ReplyFormProps) => {
-  const submitReply = data => {
+  const submitReply: SubmitHandler<Inputs> = data => {
     props.setReplies((prevReplies: CommentReply[]) => {
       return [
         ...prevReplies,
         {
           id: getRandomId(),
-          content: data.comment,
+          content: data.reply,
           replyingTo: props.replyingTo,
           user: {
             image: "user-images/image-anne.jpg",
@@ -35,8 +40,7 @@ export const ReplyForm = (props: ReplyFormProps) => {
     <CommentForm
       submitCallback={submitReply}
       formLabel={`replying to @${props.replyingTo}`}
-      baseLabelStyle={true}
-      nestedForm={true}
+      fieldName="reply"
     >
       <div className="flex justify-end gap-3">
         <Button text="Cancel" variant="danger" onClick={props.closeReplyForm} />

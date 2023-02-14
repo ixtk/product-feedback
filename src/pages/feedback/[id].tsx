@@ -8,7 +8,11 @@ import { useEffect, useState } from "react"
 import { Comment as CommentType } from "shared/types"
 import { CommentForm } from "components/comment/CommentForm"
 import { Button } from "components/common/Button"
-import { BaseContainer } from "../../components/common/BaseContainer"
+import { SubmitHandler } from "react-hook-form"
+
+interface Inputs {
+  comment: string
+}
 
 const FeedbackPage = () => {
   const router = useRouter()
@@ -23,7 +27,7 @@ const FeedbackPage = () => {
     }
   }, [router.isReady, feedbackId])
 
-  const submitComment = data => {
+  const submitComment: SubmitHandler<Inputs> = data => {
     // TODO: change user info based on current user
     setComments([
       {
@@ -44,7 +48,11 @@ const FeedbackPage = () => {
       <div className="mx-auto flex flex-col gap-y-5 px-3 pt-6 pb-12 md:max-w-3xl">
         <FeedbackPageHeader feedbackEditable={true} />
         <FeedbackCard {...feedbackData} renderLink={false} />
-        <CommentForm submitCallback={submitComment} formLabel="add comment">
+        <CommentForm
+          submitCallback={submitComment}
+          formLabel="add comment"
+          fieldName="comment"
+        >
           <div className="ml-auto">
             <Button type="submit" text="Post Comment" variant="accent" />
           </div>
