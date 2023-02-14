@@ -5,8 +5,10 @@ import { FeedbackPageHeader } from "components/FeedbackPageHeader"
 import { useRouter } from "next/router"
 import { getComments, getFeedback, getRandomId } from "utils/data"
 import { Layout } from "components/Layout"
-import { FormEvent, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Comment as CommentType } from "shared/types"
+import { useForm } from "react-hook-form"
+import { FormError } from "components/common/FormError"
 
 const FeedbackPage = () => {
   const router = useRouter()
@@ -14,7 +16,11 @@ const FeedbackPage = () => {
   const feedbackId = id as string
   const feedbackData = getFeedback(feedbackId)
   const [comments, setComments] = useState<CommentType[]>([])
-  const [newComment, setNewComment] = useState("")
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm()
 
   useEffect(() => {
     if (router.isReady) {
@@ -22,13 +28,12 @@ const FeedbackPage = () => {
     }
   }, [router.isReady, feedbackId])
 
-  const submitComment = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const submitComment = data => {
     // TODO: change user info based on current user
     setComments([
       {
         id: getRandomId(),
-        content: newComment,
+        content: data.comment,
         user: {
           image: "user-images/image-thomas.jpg",
           name: "Demo User",
@@ -37,7 +42,6 @@ const FeedbackPage = () => {
       },
       ...comments
     ])
-    setNewComment("")
   }
 
   return (
@@ -46,19 +50,27 @@ const FeedbackPage = () => {
         <FeedbackPageHeader feedbackEditable={true} />
         <FeedbackCard {...feedbackData} renderLink={false} />
         <form
-          className="rounded-corners flex flex-col gap-y-3 bg-base-100 p-5 shadow-sm"
-          onSubmit={submitComment}
+          className="rounded-corners flex flex-col bg-base-100 p-5 shadow-sm"
+          onSubmit={handleSubmit(submitComment)}
         >
-          <label>
-            <span className="mb-2 inline-block text-lg font-semibold capitalize">
+          <label htmlFor="comment" className="col-span-full">
+            <span className="mb-1 inline-block text-lg font-semibold capitalize">
               add comment
             </span>
-            <textarea
-              rows={5}
-              value={newComment}
-              onChange={e => setNewComment(e.target.value)}
-            />
           </label>
+          {errors.comment && <FormError error={errors.comment.message} />}
+          <textarea
+            className="my-3"
+            rows={5}
+            {...register("comment", {
+              required: "This field is required",
+              minLength: {
+                value: 10,
+                message: "Minimum of 10 characters"
+              },
+              maxLength: { value: 400, message: "Maximum of 400 characters" }
+            })}
+          />
           <div className="ml-auto">
             <Button type="submit" text="Post Comment" variant="accent" />
           </div>
