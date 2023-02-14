@@ -2,6 +2,7 @@ import { User } from "shared/types"
 
 interface CommentHeaderProps {
   user: User
+  replyFormVisible: boolean
   showReplyForm: () => void
 }
 
@@ -14,12 +15,14 @@ export const CommentHeader = (props: CommentHeaderProps) => {
         <h3 className="font-medium">{props.user.name}</h3>
         <span className="text-secondary-700">@{props.user.username}</span>
       </address>
-      <button
-        className="self-start pb-2 pl-2 font-medium text-primary-600 hover:underline"
-        onClick={props.showReplyForm}
-      >
-        Reply
-      </button>
+      {!props.replyFormVisible && (
+        <button
+          className="self-start pb-2 pl-2 font-medium text-primary-600 hover:underline"
+          onClick={props.showReplyForm}
+        >
+          Reply
+        </button>
+      )}
     </header>
   )
 }

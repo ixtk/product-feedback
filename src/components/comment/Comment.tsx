@@ -25,7 +25,11 @@ export const Comment = (props: CommentProps) => {
   return (
     <>
       <article>
-        <CommentHeader user={props.user} showReplyForm={showReplyForm} />
+        <CommentHeader
+          user={props.user}
+          replyFormVisible={replyFormVisible}
+          showReplyForm={showReplyForm}
+        />
         <p className="mt-3 text-secondary-700">{props.content}</p>
         {replyFormVisible && (
           <ReplyForm
