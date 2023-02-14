@@ -1,6 +1,7 @@
 import { FormError } from "components/common/FormError"
 import { useForm } from "react-hook-form"
 import clsx from "clsx"
+import { useEffect } from "react"
 
 interface CommentFormProps {
   submitCallback: any
@@ -13,7 +14,8 @@ export const CommentForm = ({ fieldName, ...props }: CommentFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    reset,
+    formState: { errors, isSubmitSuccessful }
   } = useForm()
 
   const minLength = fieldName === "comment" ? 20 : 5
@@ -25,6 +27,12 @@ export const CommentForm = ({ fieldName, ...props }: CommentFormProps) => {
     },
     maxLength: { value: 400, message: "Maximum of 400 characters" }
   }
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({ [fieldName]: "" })
+    }
+  }, [isSubmitSuccessful, reset, fieldName])
 
   return (
     <form
