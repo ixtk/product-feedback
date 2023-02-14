@@ -2,7 +2,12 @@ import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { CommentChain } from "components/comment/CommentChain"
 import { FeedbackPageHeader } from "components/FeedbackPageHeader"
 import { useRouter } from "next/router"
-import { getComments, getFeedback, getRandomId } from "utils/data"
+import {
+  getCommentCount,
+  getComments,
+  getFeedback,
+  getRandomId
+} from "utils/data"
 import { Layout } from "components/Layout"
 import { useEffect, useState } from "react"
 import { Comment as CommentType } from "shared/types"
@@ -20,10 +25,12 @@ const FeedbackPage = () => {
   const feedbackId = id as string
   const feedbackData = getFeedback(feedbackId)
   const [comments, setComments] = useState<CommentType[]>([])
+  const [commentCount, setCommentCount] = useState(0)
 
   useEffect(() => {
     if (router.isReady) {
       setComments(getComments(feedbackId))
+      setCommentCount(getCommentCount(feedbackId))
     }
   }, [router.isReady, feedbackId])
 
@@ -41,13 +48,18 @@ const FeedbackPage = () => {
       },
       ...comments
     ])
+    setCommentCount(prevCount => prevCount + 1)
   }
 
   return (
     <Layout pageTitle={feedbackData?.title ?? "Suggestion"}>
       <div className="mx-auto flex flex-col gap-y-5 px-3 pt-6 pb-12 md:max-w-3xl">
         <FeedbackPageHeader feedbackEditable={true} />
-        <FeedbackCard {...feedbackData} renderLink={false} />
+        <FeedbackCard
+          {...feedbackData}
+          renderLink={false}
+          showCommentCount={false}
+        />
         <CommentForm
           submitCallback={submitComment}
           formLabel="add comment"
@@ -57,7 +69,12 @@ const FeedbackPage = () => {
             <Button type="submit" text="Post Comment" variant="accent" />
           </div>
         </CommentForm>
-        <CommentChain feedbackId={feedbackId} comments={comments} />
+        <CommentChain
+          setCommentCount={setCommentCount}
+          commentCount={commentCount}
+          feedbackId={feedbackId}
+          comments={comments}
+        />
       </div>
     </Layout>
   )

@@ -1,16 +1,16 @@
 import { BaseContainer } from "components/common/BaseContainer"
 import { Comment } from "components/comment/Comment"
-import { getCommentCount } from "utils/data"
 import { Comment as CommentType } from "shared/types"
+import { Dispatch, SetStateAction } from "react"
 
 interface CommentChainProps {
   feedbackId: string
   comments: CommentType[]
+  commentCount: number
+  setCommentCount: Dispatch<SetStateAction<number>>
 }
 
 export const CommentChain = (props: CommentChainProps) => {
-  const commentCount = getCommentCount(props.feedbackId)
-
   const commentElements = props.comments.map(comment => {
     return (
       <Comment
@@ -18,6 +18,7 @@ export const CommentChain = (props: CommentChainProps) => {
         content={comment.content}
         user={comment.user}
         replies={comment?.replies ?? []}
+        setCommentCount={props.setCommentCount}
       />
     )
   })
@@ -25,7 +26,7 @@ export const CommentChain = (props: CommentChainProps) => {
   return (
     <BaseContainer>
       <h2 className="mb-5 text-lg font-bold text-secondary-900">
-        {commentCount} Comment(s)
+        {props.commentCount} Comment(s)
       </h2>
       <div className="flex flex-col gap-y-6">{commentElements}</div>
     </BaseContainer>

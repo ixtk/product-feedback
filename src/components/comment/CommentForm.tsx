@@ -38,13 +38,13 @@ export const CommentForm = ({ fieldName, ...props }: CommentFormProps) => {
     <form
       className={clsx(
         "rounded-corners flex flex-col bg-base-100",
-        fieldName === "reply" || "p-5"
+        fieldName === "reply" || "p-5 shadow-sm"
       )}
       onSubmit={handleSubmit(props.submitCallback)}
     >
       <label
         htmlFor={fieldName}
-        className={clsx(fieldName === "reply" && "mt-5")}
+        className={clsx(fieldName === "reply" && "mt-5", "text-secondary-900")}
       >
         <span
           className={clsx(

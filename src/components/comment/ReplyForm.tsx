@@ -10,6 +10,7 @@ interface ReplyFormProps {
   replyingTo: string
   closeReplyForm: () => void
   setReplyFormVisible: any
+  setCommentCount: Dispatch<SetStateAction<number>>
 }
 
 interface Inputs {
@@ -34,6 +35,7 @@ export const ReplyForm = (props: ReplyFormProps) => {
       ]
     })
     props.setReplyFormVisible(false)
+    props.setCommentCount(prevCount => prevCount + 1)
   }
 
   return (
