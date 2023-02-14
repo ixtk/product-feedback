@@ -8,6 +8,7 @@ interface CommentProps extends BaseComment {
   replies: CommentReply[]
   classExtension?: string
   setCommentCount: Dispatch<SetStateAction<number>>
+  replyingTo?: string
 }
 
 export const Comment = (props: CommentProps) => {
@@ -31,7 +32,14 @@ export const Comment = (props: CommentProps) => {
           replyFormVisible={replyFormVisible}
           showReplyForm={showReplyForm}
         />
-        <p className="mt-3 text-secondary-700">{props.content}</p>
+        <p className="mt-3 text-secondary-700">
+          {props.replyingTo && (
+            <span className="font-medium text-accentPrimary-800">
+              @{props.replyingTo}
+            </span>
+          )}{" "}
+          {props.content}
+        </p>
         {replyFormVisible && (
           <ReplyForm
             replyingTo={props.user.username}
@@ -57,6 +65,7 @@ export const Comment = (props: CommentProps) => {
                 content={commentReply.content}
                 user={commentReply.user}
                 setCommentCount={props.setCommentCount}
+                replyingTo={commentReply.replyingTo}
               />
             )
           })}
