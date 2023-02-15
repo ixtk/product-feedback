@@ -3,17 +3,19 @@ import { UpvoteButton } from "components/feedback/UpvoteButton"
 import { CommentCount } from "components/comment/CommentCount"
 import Link from "next/link"
 import { Feedback } from "shared/types"
-import { getCommentCount } from "utils/data"
 import clsx from "clsx"
+import { getCommentCount } from "utils/data"
 
 interface FeedbackCardProps extends Feedback {
   renderLink?: boolean
   roadmapCard?: boolean
+  showCommentCount?: boolean
 }
 
 export const FeedbackCard = ({
   renderLink = true,
   roadmapCard = false,
+  showCommentCount = true,
   ...props
 }: FeedbackCardProps) => {
   const commentCount = getCommentCount(props.id)
@@ -47,7 +49,7 @@ export const FeedbackCard = ({
         </p>
         <Tag text={props.category} />
       </div>
-      <CommentCount commentCount={commentCount} />
+      {showCommentCount && <CommentCount commentCount={commentCount} />}
     </article>
   )
 }

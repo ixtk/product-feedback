@@ -1,30 +1,80 @@
 import { FeedbackCard } from "components/feedback/FeedbackCard"
-import { Button } from "components/common/Button"
 import { CommentChain } from "components/comment/CommentChain"
 import { FeedbackPageHeader } from "components/FeedbackPageHeader"
 import { useRouter } from "next/router"
-import { getFeedback } from "utils/data"
-import { Textarea, withLabel } from "components/input/Input"
+import {
+  getCommentCount,
+  getComments,
+  getFeedback,
+  getRandomId
+} from "utils/data"
 import { Layout } from "components/Layout"
+import { useEffect, useState } from "react"
+import { Comment as CommentType } from "shared/types"
+import { CommentForm } from "components/comment/CommentForm"
+import { Button } from "components/common/Button"
+import { SubmitHandler } from "react-hook-form"
+
+interface Inputs {
+  comment: string
+}
 
 const FeedbackPage = () => {
   const router = useRouter()
   const { id } = router.query
-  const feedbackData = getFeedback(Number(id))
-  const CommentField = withLabel(Textarea)
+  const feedbackId = id as string
+  const feedbackData = getFeedback(feedbackId)
+  const [comments, setComments] = useState<CommentType[]>([])
+  const [commentCount, setCommentCount] = useState(0)
+
+  useEffect(() => {
+    if (router.isReady) {
+      setComments(getComments(feedbackId))
+      setCommentCount(getCommentCount(feedbackId))
+    }
+  }, [router.isReady, feedbackId])
+
+  const submitComment: SubmitHandler<Inputs> = data => {
+    // TODO: change user info based on current user
+    setComments([
+      {
+        id: getRandomId(),
+        content: data.comment,
+        user: {
+          image: "user-images/image-thomas.jpg",
+          name: "Demo User",
+          username: "demouser"
+        }
+      },
+      ...comments
+    ])
+    setCommentCount(prevCount => prevCount + 1)
+  }
 
   return (
     <Layout pageTitle={feedbackData?.title ?? "Suggestion"}>
       <div className="mx-auto flex flex-col gap-y-5 px-3 pt-6 pb-12 md:max-w-3xl">
         <FeedbackPageHeader feedbackEditable={true} />
-        <FeedbackCard {...feedbackData} renderLink={false} />
-        <CommentChain feedbackId={Number(id)} />
-        <div className="rounded-corners flex flex-col gap-y-5 bg-base-100 p-5 shadow-sm">
-          <CommentField labelText="add comment" />
-          <div className="flex justify-end">
-            <Button text="Post Comment" variant="accent" />
+        <FeedbackCard
+          {...feedbackData}
+          renderLink={false}
+          showCommentCount={false}
+        />
+        <CommentForm
+          submitCallback={submitComment}
+          formLabel="add comment"
+          fieldName="comment"
+        >
+          <div className="ml-auto">
+            <Button type="submit" text="Post Comment" variant="accent" />
           </div>
-        </div>
+        </CommentForm>
+        <CommentChain
+          setCommentCount={setCommentCount}
+          commentCount={commentCount}
+          feedbackId={feedbackId}
+          comments={comments}
+        />
       </div>
     </Layout>
   )

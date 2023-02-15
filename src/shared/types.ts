@@ -9,21 +9,19 @@ export interface BaseComment {
   content: string
 }
 
-export interface CommentReply {
-  content: string
-  user: User
-  replyingTo: string
-}
-
 export interface Comment {
-  id: number
+  id: string
   content: string
   user: User
   replies?: CommentReply[]
 }
 
+export interface CommentReply extends Comment {
+  replyingTo: string
+}
+
 export interface Feedback {
-  id: number
+  id: string
   title: string
   category: string
   upvotes: number

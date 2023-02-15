@@ -1,40 +1,44 @@
 import { BaseContainer } from "components/common/BaseContainer"
 import { Comment } from "components/comment/Comment"
+import { Comment as CommentType } from "shared/types"
+import { Dispatch, SetStateAction } from "react"
 import clsx from "clsx"
-import { CommentReplies } from "components/comment/CommentReplies"
-import { getCommentCount, getComments } from "utils/data"
 
 interface CommentChainProps {
-  feedbackId: number
+  feedbackId: string
+  comments: CommentType[]
+  commentCount: number
+  setCommentCount: Dispatch<SetStateAction<number>>
 }
 
 export const CommentChain = (props: CommentChainProps) => {
-  const comments = getComments(props.feedbackId)
-  const commentCount = getCommentCount(props.feedbackId)
-
-  const commentElements = comments.map(comment => {
+  const commentElements = props.comments.map(comment => {
     return (
-      <div key={comment.id} className="group">
-        <Comment
-          content={comment.content}
-          user={comment.user}
-          classExtension={clsx(
-            comment.replies
-              ? "border-b-0 pb-8"
-              : "border-b border-b-base-400 pb-6 group-last-of-type:border-0 group-last-of-type:pb-0"
-          )}
-        />
-        {comment.replies && <CommentReplies replies={comment.replies} />}
-      </div>
+      <Comment
+        key={comment.id}
+        content={comment.content}
+        user={comment.user}
+        replies={comment?.replies ?? []}
+        setCommentCount={props.setCommentCount}
+      />
     )
   })
 
   return (
-    <BaseContainer classExtension="flex flex-col gap-y-6">
-      <h2 className="text-lg font-bold text-secondary-900">
-        {commentCount} Comment(s)
+    <BaseContainer>
+      <h2
+        className={clsx(
+          props.comments.length > 0 && "mb-5",
+          "text-lg font-bold text-secondary-900"
+        )}
+      >
+        {props.comments.length === 0 ? (
+          <span>No comments</span>
+        ) : (
+          <span>{props.commentCount} Comment(s)</span>
+        )}
       </h2>
-      {commentElements}
+      <div className="flex flex-col gap-y-6">{commentElements}</div>
     </BaseContainer>
   )
 }
