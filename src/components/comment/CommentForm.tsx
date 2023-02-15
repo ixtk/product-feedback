@@ -25,7 +25,11 @@ export const CommentForm = ({ fieldName, ...props }: CommentFormProps) => {
       value: minLength,
       message: `Minimum of ${minLength} characters`
     },
-    maxLength: { value: 400, message: "Maximum of 400 characters" }
+    maxLength: { value: 400, message: "Maximum of 400 characters" },
+    validate: {
+      minLengthTrimmed: (value: string) =>
+        value.trim().length >= minLength || `Minimum of ${minLength} characters`
+    }
   }
 
   useEffect(() => {

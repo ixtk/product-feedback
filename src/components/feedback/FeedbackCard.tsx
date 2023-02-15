@@ -4,7 +4,7 @@ import { CommentCount } from "components/comment/CommentCount"
 import Link from "next/link"
 import { Feedback } from "shared/types"
 import clsx from "clsx"
-import { getCommentCount } from "../../utils/data"
+import { getCommentCount } from "utils/data"
 
 interface FeedbackCardProps extends Feedback {
   renderLink?: boolean

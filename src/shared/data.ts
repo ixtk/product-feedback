@@ -50,7 +50,7 @@ export const productRequests = [
       {
         id: "AzXm1CW493",
         content:
-          "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my deviceÆs dark mode turns on without the bright background it currently has.",
+          "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device's dark mode turns on without the bright background it currently has.",
         user: {
           image: "user-images/image-elijah.jpg",
           name: "Elijah Moss",
@@ -60,7 +60,7 @@ export const productRequests = [
       {
         id: "08BF19EXsL",
         content:
-          "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. ItÆs also quite a trend with modern apps and  apparently saves battery life.",
+          "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It's also quite a trend with modern apps and  apparently saves battery life.",
         user: {
           image: "user-images/image-james.jpg",
           name: "James Skinner",
@@ -163,7 +163,7 @@ export const productRequests = [
         replies: [
           {
             content:
-              "Bumping this. It would be good to have a tab with a feed of people I follow so it's easy to see what challenges theyÆve done lately. I learn a lot by reading good developers' code.",
+              "Bumping this. It would be good to have a tab with a feed of people I follow so it's easy to see what challenges they've done lately. I learn a lot by reading good developers' code.",
             replyingTo: "arlen_the_marlin",
             user: {
               image: "user-images/image-zena.jpg",
@@ -177,7 +177,7 @@ export const productRequests = [
       {
         id: "NfarY2w637",
         content:
-          "I've been saving the profile URLs of a few people and I check what theyÆve been doing from time to time. Being able to follow them solves that",
+          "I've been saving the profile URLs of a few people and I check what they've been doing from time to time. Being able to follow them solves that",
         user: {
           image: "user-images/image-jackson.jpg",
           name: "Jackson Barker",
@@ -294,7 +294,7 @@ export const productRequests = [
     upvotes: 9,
     status: "in-progress",
     description:
-      "Screenshots of solutions with animations donÆt display correctly."
+      "Screenshots of solutions with animations don't display correctly."
   },
   {
     id: "PqT20k49bx",
