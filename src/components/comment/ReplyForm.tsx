@@ -4,6 +4,7 @@ import { CommentReply } from "shared/types"
 import { getRandomId } from "utils/data"
 import { CommentForm } from "components/comment/CommentForm"
 import { SubmitHandler } from "react-hook-form"
+import { currentUser } from "shared/data"
 
 interface ReplyFormProps {
   setReplies: Dispatch<SetStateAction<CommentReply[]>>
@@ -26,11 +27,7 @@ export const ReplyForm = (props: ReplyFormProps) => {
           id: getRandomId(),
           content: data.reply,
           replyingTo: props.replyingTo,
-          user: {
-            image: "user-images/image-anne.jpg",
-            name: "Demo User",
-            username: "demouser"
-          }
+          user: currentUser
         }
       ]
     })

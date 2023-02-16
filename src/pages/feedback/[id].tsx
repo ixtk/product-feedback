@@ -14,6 +14,7 @@ import { Comment as CommentType } from "shared/types"
 import { CommentForm } from "components/comment/CommentForm"
 import { Button } from "components/common/Button"
 import { SubmitHandler } from "react-hook-form"
+import { currentUser } from "shared/data"
 
 interface Inputs {
   comment: string
@@ -35,16 +36,11 @@ const FeedbackPage = () => {
   }, [router.isReady, feedbackId])
 
   const submitComment: SubmitHandler<Inputs> = data => {
-    // TODO: change user info based on current user
     setComments([
       {
         id: getRandomId(),
         content: data.comment,
-        user: {
-          image: "user-images/image-thomas.jpg",
-          name: "Demo User",
-          username: "demouser"
-        }
+        user: currentUser
       },
       ...comments
     ])
