@@ -20,14 +20,6 @@ export const FeedbackCard = ({
 }: FeedbackCardProps) => {
   const commentCount = getCommentCount(props.id)
 
-  const CardTitle = () => {
-    return (
-      <h3 className="mb-3 inline-block text-lg font-bold text-secondary-800 underline decoration-base-100 transition duration-150 group-hover:text-primary-600 group-hover:decoration-primary-600 md:text-lg">
-        {props.title}
-      </h3>
-    )
-  }
-
   return (
     <article
       className={clsx(
@@ -38,13 +30,20 @@ export const FeedbackCard = ({
       <UpvoteButton upvoteCount={props.upvotes} onRoadmapCard={roadmapCard} />
       <div className="col-start-1 col-end-3 flex-1">
         {renderLink ? (
-          <Link href={`/feedback/${props.id}`} className="group inline-block">
-            <CardTitle />
-          </Link>
+          <h3 className="inline-block text-lg font-bold text-secondary-800 md:text-lg">
+            <Link
+              href={`/feedback/${props.id}`}
+              className="inline-block duration-75 hover:text-primary-600 hover:decoration-primary-600"
+            >
+              {props.title}
+            </Link>
+          </h3>
         ) : (
-          <CardTitle />
+          <h3 className="inline-block text-lg font-bold text-secondary-800 underline decoration-base-100 md:text-lg">
+            {props.title}
+          </h3>
         )}
-        <p className="text mb-3 text-secondary-700 md:text-base">
+        <p className="text my-3 text-secondary-700 md:text-base">
           {props.description}
         </p>
         <Tag text={props.category} />

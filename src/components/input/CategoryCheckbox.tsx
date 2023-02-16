@@ -25,7 +25,7 @@ export const CategoryCheckbox = (props: CategoryCheckboxProps) => {
 
   return (
     <>
-      <label className="rounded-corners flex cursor-pointer items-center justify-center gap-x-2 border border-primary-200 bg-base-300 px-2 py-1 text-sm font-medium capitalize text-primary-600">
+      <label className="rounded-corners flex cursor-pointer items-center justify-center gap-x-2 border border-primary-200 bg-base-300 px-2 py-1 text-sm font-medium capitalize text-primary-600 transition duration-75 hover:bg-primary-200">
         {props.text}
         <input
           type="checkbox"

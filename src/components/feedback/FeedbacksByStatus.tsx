@@ -19,7 +19,7 @@ export const FeedbacksByStatus = ({
   const feedbackCards = feedbacksByStatus.map(feedback => {
     return (
       <div
-        key={feedback.title}
+        key={feedback.id}
         className={clsx(
           "rounded-corners border-t-[5px] bg-base-100",
           feedbackStatus === "planned" && "border-t-accentSecondary",

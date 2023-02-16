@@ -14,10 +14,9 @@ export const FeedbackList = (props: FeedbackListProps) => {
     filteredFeedbacks,
     props.sortBy
   ).map(request => {
-    // what to use for keys
     return (
       <FeedbackCard
-        key={request.title}
+        key={request.id}
         id={request.id}
         title={request.title}
         category={request.category}
