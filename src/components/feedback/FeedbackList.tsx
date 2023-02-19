@@ -2,6 +2,8 @@ import { NoFeedbackSection } from "components/feedback/NoFeedbackSection"
 import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { SortBy } from "shared/types"
 import { getFeedbackByCategories, sortFeedbacks } from "utils/data"
+import { useContext } from "react"
+import { FeedbackContext } from "context/FeedbackList"
 
 interface FeedbackListProps {
   selectedCategories: string[]
@@ -9,7 +11,11 @@ interface FeedbackListProps {
 }
 
 export const FeedbackList = (props: FeedbackListProps) => {
-  const filteredFeedbacks = getFeedbackByCategories(props.selectedCategories)
+  const { feedbacks } = useContext(FeedbackContext)
+  const filteredFeedbacks = getFeedbackByCategories(
+    feedbacks,
+    props.selectedCategories
+  )
   const sortedFeedbackCards = sortFeedbacks(
     filteredFeedbacks,
     props.sortBy

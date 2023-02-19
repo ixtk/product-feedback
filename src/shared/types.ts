@@ -27,6 +27,7 @@ export interface Feedback {
   upvotes: number
   status: string
   description: string
+  comments?: Comment[]
 }
 
 export interface SortBy {

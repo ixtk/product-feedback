@@ -1,17 +1,18 @@
-import { productRequests } from "shared/data"
 import { Comment, Feedback, FeedbackDetailed, SortBy } from "shared/types"
 
-export const getComments = (feedbackId: string): Comment[] | [] => {
-  const feedback = productRequests.filter(
+export const getComments = (
+  feedbacks: Feedback[],
+  feedbackId: string
+): Comment[] | [] => {
+  const feedback = feedbacks.filter(
     (feedback: Feedback) => feedback.id === feedbackId
   )
 
-  // optionally access comments or return []
   return feedback[0]?.comments ?? []
 }
 
-export const getCommentCount = (feedbackId: string) => {
-  const comments = getComments(feedbackId)
+export const getCommentCount = (feedbacks: Feedback[], feedbackId: string) => {
+  const comments = getComments(feedbacks, feedbackId)
   let count = 0
   for (let comment of comments) {
     count += 1
@@ -22,31 +23,31 @@ export const getCommentCount = (feedbackId: string) => {
   return count
 }
 
-export const getFeedbackByCategories = (categories: string[]) => {
-  if (categories.length === 0) return productRequests
-  return productRequests.filter(request =>
-    categories.includes(request.category)
-  )
+export const getFeedbackByCategories = (
+  feedbacks: Feedback[],
+  categories: string[]
+) => {
+  if (categories.length === 0) return feedbacks
+  return feedbacks.filter(request => categories.includes(request.category))
 }
 
-export const getFeedback = (feedbackId: string) => {
-  return productRequests.filter(
-    (feedback: Feedback) => feedback.id === feedbackId
-  )[0]
+export const getFeedback = (feedbacks: Feedback[], feedbackId: string) => {
+  return feedbacks.filter((feedback: Feedback) => feedback.id === feedbackId)[0]
 }
 
 export const getFeedbacksByStatus = (
+  feedbacks: Feedback[],
   feedbackStatus: string
 ): Feedback[] | [] => {
   // Try nullish coalescing operator
-  return productRequests.filter(feedback => {
+  return feedbacks.filter(feedback => {
     return feedback.status === feedbackStatus
   })
 }
 
-export const getRoadmapStatusCount = () => {
+export const getRoadmapStatusCount = (feedbacks: Feedback[]) => {
   const statusCountObj: Record<string, number> = {}
-  for (const feedback of productRequests) {
+  for (const feedback of feedbacks) {
     if (feedback.status in statusCountObj) {
       statusCountObj[feedback.status] += 1
     } else {
@@ -73,8 +74,8 @@ export const sortFeedbacks = (
   return feedbacks.sort((a, b) => {
     const attr = sortBy.field as keyof FeedbackDetailed
     if (attr === "comments") {
-      const commentCountA = getCommentCount(a.id)
-      const commentCountB = getCommentCount(b.id)
+      const commentCountA = getCommentCount(feedbacks, a.id)
+      const commentCountB = getCommentCount(feedbacks, b.id)
 
       if (commentCountA < commentCountB) return sortBy.ascending ? -1 : 1
       else if (commentCountA > commentCountB) return sortBy.ascending ? 1 : -1

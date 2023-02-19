@@ -1,15 +1,34 @@
 import { Button, LinkButton } from "components/common/Button"
 
-export const FeedbackFormFooter = ({ editing }: { editing: boolean }) => {
+interface FeedbackFormFooterProps {
+  editing: boolean
+  addFeedback: any
+  deleteFeedback: any
+  editFeedback: any
+}
+
+export const FeedbackFormFooter = (props: FeedbackFormFooterProps) => {
   return (
     <footer className="flex flex-col justify-end gap-y-2 gap-x-2 text-center min-[340px]:flex-row">
-      {editing ? (
+      {props.editing ? (
         <>
-          <Button text="Delete" variant="danger" type="submit" />
-          <Button text="Save changes" type="submit" variant="accent" />
+          <Button
+            text="Delete"
+            variant="danger"
+            onClick={props.deleteFeedback}
+          />
+          <Button
+            text="Save changes"
+            variant="accent"
+            onClick={props.editFeedback}
+          />
         </>
       ) : (
-        <Button text="Add Feedback" type="submit" variant="accent" />
+        <Button
+          text="Add Feedback"
+          variant="accent"
+          onClick={props.addFeedback}
+        />
       )}
       <LinkButton text="Cancel" variant="neutral" href="/" />
     </footer>

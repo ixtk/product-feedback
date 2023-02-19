@@ -6,13 +6,15 @@ import { useForm } from "react-hook-form"
 import { getValidators } from "utils/validators"
 import { FormError } from "components/common/FormError"
 import { useRouter } from "next/router"
-import { getFeedback } from "utils/data"
-import { useEffect } from "react"
+import { getFeedback, getRandomId } from "utils/data"
+import { useContext, useEffect } from "react"
+import { FeedbackContext } from "context/FeedbackList"
 
 export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   const router = useRouter()
   const { id } = router.query
-  const feedbackData = getFeedback(id as string)
+  const { feedbacks, setFeedbacks } = useContext(FeedbackContext)
+  const feedbackData = getFeedback(feedbacks, id as string)
   const {
     register,
     handleSubmit,
@@ -21,11 +23,48 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
     formState: { errors }
   } = useForm()
 
-  const submitFeedback = handleSubmit(data => {
+  const addFeedback = handleSubmit(async data => {
     data.title = data.title.trim()
     data.description = data.description.trim()
-    console.log(data)
+    const newId = getRandomId()
+    setFeedbacks?.(prevFeedbacks => [
+      ...prevFeedbacks,
+      {
+        title: data.title,
+        category: data.category,
+        description: data.description,
+        id: newId,
+        upvotes: 0,
+        status: "suggestion"
+      }
+    ])
+    await router.push({ pathname: `/feedback/${newId}` })
   })
+
+  const editFeedback = handleSubmit(async data => {
+    data.title = data.title.trim()
+    data.description = data.description.trim()
+    setFeedbacks?.(prevFeedbacks => {
+      const feedbacksCopy = [...prevFeedbacks]
+      return feedbacksCopy.map(feedback => {
+        if (feedback.id === id) {
+          feedback.title = data.title
+          feedback.status = data.status
+          feedback.category = data.category
+          feedback.description = data.description
+        }
+        return feedback
+      })
+    })
+    await router.push({ pathname: `/feedback/${id}` })
+  })
+
+  const deleteFeedback = async () => {
+    setFeedbacks?.(prevFeedbacks =>
+      prevFeedbacks.filter(feedback => feedback.id !== id)
+    )
+    await router.push({ pathname: "/" })
+  }
 
   useEffect(() => {
     if (!router.isReady) return
@@ -40,10 +79,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   }, [router, editing, feedbackData, reset])
 
   return (
-    <form
-      onSubmit={submitFeedback}
-      className="rounded-corners relative inline-block flex flex-col gap-y-5 border border-base-400 bg-base-100 p-5 shadow-sm"
-    >
+    <form className="rounded-corners relative inline-block flex flex-col gap-y-5 border border-base-400 bg-base-100 p-5 shadow-sm">
       <FeedbackFormHeader
         feedbackTitle={editing ? feedbackData?.title ?? "" : ""}
       />
@@ -102,7 +138,12 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
           {...register("description", getValidators("description"))}
         />
       </div>
-      <FeedbackFormFooter editing={editing} />
+      <FeedbackFormFooter
+        editFeedback={editFeedback}
+        addFeedback={addFeedback}
+        deleteFeedback={deleteFeedback}
+        editing={editing}
+      />
     </form>
   )
 }
