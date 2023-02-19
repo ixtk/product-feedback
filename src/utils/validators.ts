@@ -10,7 +10,7 @@ const LENGTH_CONSTRAINTS: Constraints = {
     minLength: 10,
     maxLength: 80
   },
-  details: {
+  description: {
     minLength: 10,
     maxLength: 400
   },

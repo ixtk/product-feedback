@@ -3,6 +3,7 @@ import { HomeLink } from "components/common/HomeLink"
 
 interface FeedbackPageHeaderProps {
   feedbackEditable?: boolean
+  feedbackId?: string
 }
 
 export const FeedbackPageHeader = (props: FeedbackPageHeaderProps) => {
@@ -11,14 +12,12 @@ export const FeedbackPageHeader = (props: FeedbackPageHeaderProps) => {
       <div className="text-secondary-900">
         <HomeLink />
       </div>
-      {props.feedbackEditable ? (
+      {props.feedbackEditable && (
         <LinkButton
-          href="/feedback/1/edit"
+          href={`/feedback/${props.feedbackId}/edit`}
           text="Edit feedback"
           variant="primary"
         />
-      ) : (
-        <span></span>
       )}
     </header>
   )

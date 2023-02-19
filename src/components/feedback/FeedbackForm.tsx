@@ -2,35 +2,51 @@ import { SelectList } from "components/input/SelectList"
 import { FeedbackFormFooter } from "components/feedback/FeedbackFormFooter"
 import { FeedbackFormHeader } from "components/feedback/FeedbackFormHeader"
 import { categories, statusList } from "shared/data"
-import { SubmitHandler, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { getValidators } from "utils/validators"
 import { FormError } from "components/common/FormError"
-
-interface Inputs {
-  title: string
-  details: string
-}
+import { useRouter } from "next/router"
+import { getFeedback } from "utils/data"
+import { useEffect } from "react"
 
 export const FeedbackForm = ({ editing }: { editing: boolean }) => {
+  const router = useRouter()
+  const { id } = router.query
+  const feedbackData = getFeedback(id as string)
   const {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors }
   } = useForm()
 
-  const submitFeedback: SubmitHandler<Inputs> = data => {
+  const submitFeedback = handleSubmit(data => {
     data.title = data.title.trim()
-    data.details = data.details.trim()
+    data.description = data.description.trim()
     console.log(data)
-  }
+  })
+
+  useEffect(() => {
+    if (!router.isReady) return
+    if (!editing) return
+
+    reset({
+      title: editing ? feedbackData.title : "",
+      category: editing ? feedbackData.category : categories[0],
+      status: editing ? feedbackData.status : statusList[0],
+      description: editing ? feedbackData.description : ""
+    })
+  }, [router, editing, feedbackData, reset])
 
   return (
     <form
-      onSubmit={handleSubmit(submitFeedback)}
+      onSubmit={submitFeedback}
       className="rounded-corners relative inline-block flex flex-col gap-y-5 border border-base-400 bg-base-100 p-5 shadow-sm"
     >
-      <FeedbackFormHeader editing={editing} />
+      <FeedbackFormHeader
+        feedbackTitle={editing ? feedbackData?.title ?? "" : ""}
+      />
       <div>
         <label className="text-sm font-medium capitalize md:text-base">
           Feedback title
@@ -44,6 +60,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
         <input
           type="text"
           className="mt-1"
+          defaultValue={editing ? feedbackData?.title ?? "" : ""}
           {...register("title", getValidators("title"))}
         />
       </div>
@@ -75,13 +92,14 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
         <p className="mt-1 text-secondary-700">
           Include any specific comments on what should be improved, added, etc
         </p>
-        {errors.details && (
-          <FormError error={(errors.details.message as string) ?? ""} />
+        {errors.description && (
+          <FormError error={(errors.description.message as string) ?? ""} />
         )}
         <textarea
           className="mt-1"
           rows={6}
-          {...register("details", getValidators("details"))}
+          defaultValue={editing ? feedbackData?.description ?? "" : ""}
+          {...register("description", getValidators("description"))}
         />
       </div>
       <FeedbackFormFooter editing={editing} />
