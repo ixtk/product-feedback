@@ -14,7 +14,9 @@ interface SidebarProps {
 
 export const Sidebar = (props: SidebarProps) => {
   const { feedbacks } = useContext(FeedbackContext)
-  const roadmapStatusCount = getRoadmapStatusCount(feedbacks)
+  const roadmapStatusCount = getRoadmapStatusCount(feedbacks).sort((a, b) =>
+    a.status.localeCompare(b.status)
+  )
   const categoryCheckboxes = categories.map(category => {
     return (
       <li key={category}>

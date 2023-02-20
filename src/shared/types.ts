@@ -34,7 +34,3 @@ export interface SortBy {
   field: string
   ascending: boolean
 }
-
-export interface FeedbackDetailed extends Feedback {
-  comments?: Comment[]
-}

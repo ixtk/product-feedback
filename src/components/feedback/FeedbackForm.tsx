@@ -60,10 +60,10 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
   })
 
   const deleteFeedback = async () => {
+    await router.push({ pathname: "/" })
     setFeedbacks?.(prevFeedbacks =>
       prevFeedbacks.filter(feedback => feedback.id !== id)
     )
-    await router.push({ pathname: "/" })
   }
 
   useEffect(() => {

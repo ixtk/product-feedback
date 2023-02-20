@@ -1,4 +1,4 @@
-import { Comment, Feedback, FeedbackDetailed, SortBy } from "shared/types"
+import { Comment, Feedback, SortBy } from "shared/types"
 
 export const getComments = (
   feedbacks: Feedback[],
@@ -67,12 +67,9 @@ export const getRoadmapStatusCount = (feedbacks: Feedback[]) => {
   return statusCountList
 }
 
-export const sortFeedbacks = (
-  feedbacks: FeedbackDetailed[],
-  sortBy: SortBy
-) => {
+export const sortFeedbacks = (feedbacks: Feedback[], sortBy: SortBy) => {
   return feedbacks.sort((a, b) => {
-    const attr = sortBy.field as keyof FeedbackDetailed
+    const attr = sortBy.field as keyof Feedback
     if (attr === "comments") {
       const commentCountA = getCommentCount(feedbacks, a.id)
       const commentCountB = getCommentCount(feedbacks, b.id)
