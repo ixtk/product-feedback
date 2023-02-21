@@ -1,6 +1,8 @@
 import { FeedbackCard } from "components/feedback/FeedbackCard"
 import { getFeedbacksByStatus } from "utils/data"
 import clsx from "clsx"
+import { useContext } from "react"
+import { FeedbackContext } from "context/FeedbackList"
 
 interface FeedbacksByStatusProps {
   feedbackStatus: string
@@ -15,7 +17,8 @@ const subTextMap: Record<string, string> = {
 export const FeedbacksByStatus = ({
   feedbackStatus
 }: FeedbacksByStatusProps) => {
-  const feedbacksByStatus = getFeedbacksByStatus(feedbackStatus)
+  const { feedbacks } = useContext(FeedbackContext)
+  const feedbacksByStatus = getFeedbacksByStatus(feedbacks, feedbackStatus)
   const feedbackCards = feedbacksByStatus.map(feedback => {
     return (
       <div

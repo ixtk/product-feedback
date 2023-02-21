@@ -27,13 +27,10 @@ export interface Feedback {
   upvotes: number
   status: string
   description: string
+  comments?: Comment[]
 }
 
 export interface SortBy {
   field: string
   ascending: boolean
-}
-
-export interface FeedbackDetailed extends Feedback {
-  comments?: Comment[]
 }

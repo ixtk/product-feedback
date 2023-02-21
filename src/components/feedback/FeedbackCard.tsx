@@ -5,6 +5,8 @@ import Link from "next/link"
 import { Feedback } from "shared/types"
 import clsx from "clsx"
 import { getCommentCount } from "utils/data"
+import { useContext } from "react"
+import { FeedbackContext } from "context/FeedbackList"
 
 interface FeedbackCardProps extends Feedback {
   renderLink?: boolean
@@ -18,7 +20,8 @@ export const FeedbackCard = ({
   showCommentCount = true,
   ...props
 }: FeedbackCardProps) => {
-  const commentCount = getCommentCount(props.id)
+  const { feedbacks } = useContext(FeedbackContext)
+  const commentCount = getCommentCount(feedbacks, props.id)
 
   return (
     <article

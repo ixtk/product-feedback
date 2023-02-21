@@ -2,6 +2,7 @@ import { FormError } from "components/common/FormError"
 import { useForm } from "react-hook-form"
 import clsx from "clsx"
 import { useEffect } from "react"
+import { getValidators } from "utils/validators"
 
 interface CommentFormProps {
   submitCallback: any
@@ -17,20 +18,6 @@ export const CommentForm = ({ fieldName, ...props }: CommentFormProps) => {
     reset,
     formState: { errors, isSubmitSuccessful }
   } = useForm()
-
-  const minLength = fieldName === "comment" ? 20 : 5
-  const commentFormValidators = {
-    required: "This field is required",
-    minLength: {
-      value: minLength,
-      message: `Minimum of ${minLength} characters`
-    },
-    maxLength: { value: 400, message: "Maximum of 400 characters" },
-    validate: {
-      minLengthTrimmed: (value: string) =>
-        value.trim().length >= minLength || `Minimum of ${minLength} characters`
-    }
-  }
 
   useEffect(() => {
     if (isSubmitSuccessful) {
@@ -69,7 +56,7 @@ export const CommentForm = ({ fieldName, ...props }: CommentFormProps) => {
         className="my-3"
         rows={fieldName === "reply" ? 4 : 5}
         autoFocus={fieldName === "reply"}
-        {...register(fieldName, commentFormValidators)}
+        {...register(fieldName, getValidators(fieldName))}
       />
       {props.children}
     </form>

@@ -4,9 +4,8 @@ import Link from "next/link"
 import clsx from "clsx"
 import { getRoadmapStatusCount } from "utils/data"
 import { categories } from "shared/data"
-import { Dispatch, SetStateAction } from "react"
-
-const roadmapStatusCount = getRoadmapStatusCount()
+import { Dispatch, SetStateAction, useContext } from "react"
+import { FeedbackContext } from "context/FeedbackList"
 
 interface SidebarProps {
   setSelectedCategories: Dispatch<SetStateAction<string[]>>
@@ -14,6 +13,10 @@ interface SidebarProps {
 }
 
 export const Sidebar = (props: SidebarProps) => {
+  const { feedbacks } = useContext(FeedbackContext)
+  const roadmapStatusCount = getRoadmapStatusCount(feedbacks).sort((a, b) =>
+    a.status.localeCompare(b.status)
+  )
   const categoryCheckboxes = categories.map(category => {
     return (
       <li key={category}>
