@@ -110,6 +110,7 @@ export const FeedbackForm = ({ editing }: { editing: boolean }) => {
           name="category"
           listData={categories}
           labelText="category"
+          spanColumn={!editing}
         />
         {editing && (
           <SelectList

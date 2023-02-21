@@ -1,19 +1,24 @@
 import { Listbox, Transition } from "@headlessui/react"
 import ArrowIcon from "assets/icons/arrow.svg"
 import { useController, UseControllerProps } from "react-hook-form"
+import clsx from "clsx"
 
 interface SelectInputProps {
   listData: string[]
   labelText: string
+  spanColumn?: boolean
 }
 
-export const SelectList = (props: SelectInputProps & UseControllerProps) => {
+export const SelectList = ({
+  spanColumn = false,
+  ...props
+}: SelectInputProps & UseControllerProps) => {
   const {
     field: { value, onChange }
   } = useController(props)
 
   return (
-    <div className="grow">
+    <div className={clsx(spanColumn ? "grow" : "grow-0 basis-1/2")}>
       <label className="flex flex-col text-sm md:text-base">
         <span className="mb-1 font-medium capitalize">{props.labelText}</span>
       </label>
