@@ -1,6 +1,7 @@
 This is a solution to the [Product feedback app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6).
 
-Users can:
+### Users can
+
 - Create, read, update, and delete product feedback requests
 - Receive form validations when trying to create/edit feedback requests
 - Sort suggestions by most/least upvotes and most/least comments
